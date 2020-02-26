@@ -1,0 +1,29 @@
+"use strict";
+// const path = require("path");
+
+module.exports = {
+  //开发模式下开启代码校验
+  lintOnSave: process.env.NODE_ENV === "development",
+  //默认输出路径
+  outputDir: "./dist",
+  //应用路径，默认为跟路径./
+  publicPath: process.env.NODE_ENV === "development" ? "./" : "./",
+  //开发环境生成MapSource文件以调试断点
+  productionSourceMap: process.env.NODE_ENV === "development",
+  //开发服务器
+  devServer: {
+    //端口
+    port: 9527,
+    //请求转发路径
+    // proxy: "http://192.168.17.159:7050/omsp_app_service"
+  },
+  //路径别名，暂时不配置，使用相对路径更便于调试
+  configureWebpack: {
+    resolve: {
+      alias: {
+        // srcPath: path.resolve(__dirname, 'src/'),
+        // publicPath: path.resolve(__dirname, 'public/')
+      }
+    }
+  }
+};
