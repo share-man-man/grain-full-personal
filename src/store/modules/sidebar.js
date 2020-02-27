@@ -1,15 +1,13 @@
 // sidebar
 const state = {
-  opened: true
+  //展开菜单
+  spreading: true,
+  //显示菜单栏
+  showing: false
 };
 
 // 获取计算属性
 const getters = {
-  //开始时间格式化
-  // getterStartDate: (state) => {
-  //     const start = state.startDate
-  //     return `${start.getFullYear()}-${start.getMonth() < 9 ? (`0` + (start.getMonth() + 1)) : start.getMonth() + 1}-${start.getDate() <= 9 ? (`0` + start.getDate()) : start.getDate()}`
-  // },
 };
 
 // 异步提交数据
@@ -17,8 +15,20 @@ const actions = {};
 
 // 同步提交数据
 const mutations = {
-  setOpened(state, flag) {
-    state.opened = flag;
+  init(state, isMobile) {
+    if (isMobile) {
+      state.spreading = true;
+      state.showing = false;
+    } else {
+      state.showing = true;
+    }
+  },
+  setSpreading(state, {isMobile}) {
+    if (isMobile) {
+      state.showing = !state.showing;
+    } else {
+      state.spreading = !state.spreading;
+    }
   }
 };
 

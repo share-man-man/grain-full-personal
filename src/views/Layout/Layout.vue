@@ -1,16 +1,27 @@
 <template>
   <div>
     <el-container>
-      <!--      默认宽度为300，后期需要改-->
-      <transition name="el-zoom-in-center">
-        <aside-menu v-show="!isMobile || (isMobile && opened)" :class="appSidebarClass"></aside-menu>
+      <!--      移动端遮罩层-->
+      <div
+        v-if="sidebarShowing && isMobile"
+        class="overlay"
+        @click="test"
+      ></div>
+      <!--      侧边菜单栏-->
+      <transition name="slide-fade">
+        <aside-menu
+          v-show="sidebarShowing"
+          :class="appSidebarClass"
+        ></aside-menu>
       </transition>
-      <!--      </el-aside>-->
+      <!--      浮动框标签框-->
+
+      <!--      主体页面-->
       <el-container>
-        <el-header>
-          <i class="el-icon-menu" @click="test"></i>
-          Header
-        </el-header>
+        <!--        <el-header>-->
+        <!--          <i class="el-icon-menu" @click="test"></i>-->
+        <!--          Header-->
+        <!--        </el-header>-->
         <el-main>
           <router-view />
         </el-main>
@@ -35,24 +46,19 @@ export default {
   },
   computed: {
     ...mapState({
+      //是否为移动端
       isMobile: state => state.app.isMobile,
-      opened: state => state.sidebar.opened
+      //是否展示侧边栏
+      sidebarShowing: state => state.sidebar.showing
     }),
-    //边框宽度
+    //侧边栏响应式样式
     appSidebarClass() {
-      return !this.isMobile
-        ? ""
-        : this.opened
-        ? "app-sidebar-show"
-        : "app-sidebar-hide";
+      return !this.isMobile ? "" : "app-sidebar";
     }
   },
   methods: {
     test() {
-      this.$store.commit(
-        "sidebar/setOpened",
-        !this.$store.state.sidebar.opened
-      );
+      this.$store.commit("sidebar/setSpreading", { isMobile: this.isMobile });
     }
   }
 };
@@ -75,32 +81,39 @@ export default {
 }
 
 .el-main {
-  background-color: #e9eef3;
+  background-color: white;
   color: #333;
   text-align: center;
-  /*line-height: 160px;*/
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 60px);
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99998;
 }
 
 .app-sidebar {
-  &-show {
-    position: fixed;
-  }
-  &-hide {
-    position: fixed;
-  }
+  position: fixed;
+  min-height: 100vh;
+  background: white;
+  z-index: 99999;
 }
 
-/*body > .el-container {*/
-/*  margin-bottom: 40px;*/
-/*}*/
-
-/*.el-container:nth-child(5) .el-aside,*/
-/*.el-container:nth-child(6) .el-aside {*/
-/*  line-height: 260px;*/
-/*}*/
-
-/*.el-container:nth-child(7) .el-aside {*/
-/*  line-height: 320px;*/
-/*}*/
+/*过渡动画*/
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 </style>
