@@ -1,12 +1,12 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import router from "./router/router";
+import store from "./store/store";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 
 //控制台生产消息
-Vue.config.productionTip = process.env.NODE_ENV === 'development';
+Vue.config.productionTip = process.env.NODE_ENV === "development";
 
 Vue.use(ElementUI);
 
