@@ -5,7 +5,7 @@
       <div
         v-if="sidebarShowing && isMobile"
         class="overlay"
-        @click="test"
+        @click="closeOverlay"
       ></div>
       <!--      侧边菜单栏-->
       <transition name="slide-fade">
@@ -15,7 +15,7 @@
         ></aside-menu>
       </transition>
       <!--      浮动框标签框-->
-
+      <float-tag @click.native="closeOverlay"></float-tag>
       <!--      主体页面-->
       <el-container>
         <!--        <el-header>-->
@@ -35,9 +35,10 @@
 import ResizeHandler from "./mixin/ResizeHandler";
 import { mapState } from "vuex";
 import AsideMenu from "./components/AsideMenu";
+import FloatTag from "./components/FloatTag";
 export default {
   name: "Layout",
-  components: { AsideMenu },
+  components: {FloatTag, AsideMenu },
   mixins: [ResizeHandler],
   data: function() {
     return {
@@ -57,7 +58,7 @@ export default {
     }
   },
   methods: {
-    test() {
+    closeOverlay() {
       this.$store.commit("sidebar/setSpreading", { isMobile: this.isMobile });
     }
   }

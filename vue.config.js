@@ -14,8 +14,13 @@ module.exports = {
   devServer: {
     //端口
     port: 9527,
-    //请求转发路径
-    // proxy: "http://192.168.17.159:7050/omsp_app_service"
+    proxy: {
+      //转发nasa请求
+      '/nasa': {
+        target: 'https://api.nasa.gov',
+        pathRewrite: {'^/nasa' : ''}
+      }
+    }
   },
   //路径别名，暂时不配置，使用相对路径更便于调试
   configureWebpack: {
