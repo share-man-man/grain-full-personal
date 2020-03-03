@@ -12,13 +12,20 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/nasa",
+    redirect: "/accent",
     children: [
       {
         path: "nasa",
         component: () => import("../views/nasa/Nasa"),
         meta: {
           title: "nasa每日一图"
+        }
+      },
+      {
+        path: "accent",
+        component: () => import("../views/accent/Accent"),
+        meta: {
+          title: "四川口音"
         }
       }
     ]

@@ -1,8 +1,9 @@
 <template>
   <div class="float-tag">
-    <div class="float-tag-left">
-      <div class="float-tag-left-inner"></div>
-    </div>
+<!--    <div class="float-tag-left">-->
+<!--      <div class="float-tag-left-inner"></div>-->
+<!--    </div>-->
+    <el-avatar icon="el-icon-user-solid"></el-avatar>
     <i class="el-icon-s-unfold" style="font-size: 25px;color: #697e9e;margin-right: 5px"></i>
   </div>
 </template>
