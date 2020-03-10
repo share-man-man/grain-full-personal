@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-scrollbar wrap-class="scrollbar-wrapper">
+    <el-scrollbar>
       <el-menu
         class="el-menu-vertical-demo"
         @open="handleOpen"
@@ -52,14 +52,9 @@ export default {
 <style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
-  min-height: 400px;
+  min-height: 100vh;
 }
-
-.svg-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
+.el-menu--collapse{
+  min-height: 100vh;
 }
 </style>

@@ -14,7 +14,7 @@ import "vant/lib/index.css";
 import '@vant/touch-emulator';/*桌面端mouse事件*/
 Vue.use(Vant);
 
-//全局js
+// 全局js
 import request from "./utils/request";
 Vue.prototype.$utilRequest = request;
 

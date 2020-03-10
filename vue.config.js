@@ -16,18 +16,28 @@ module.exports = {
     port: 9527,
     proxy: {
       //转发nasa请求
-      '/nasa': {
-        target: 'https://api.nasa.gov',
-        pathRewrite: {'^/nasa' : ''}
+      "/nasa": {
+        target: "https://api.nasa.gov",
+        pathRewrite: { "^/nasa": "" }
       }
     }
   },
   //路径别名，暂时不配置，使用相对路径更便于调试
-  configureWebpack: {
-    resolve: {
-      alias: {
-        // srcPath: path.resolve(__dirname, 'src/'),
-        // publicPath: path.resolve(__dirname, 'public/')
+  // configureWebpack: {
+  //   resolve: {
+  //     alias: {
+  //       srcPath: path.resolve(__dirname, 'src/'),
+  //       publicPath: path.resolve(__dirname, 'public/')
+  //     }
+  //   }
+  // },
+  css: {
+    loaderOptions: {
+      sass: {
+        //旧版本
+        // data: `@import "@/assets/css/theme.scss";`
+        //新版本
+        prependData: `@import "@/assets/css/theme.scss";`
       }
     }
   }

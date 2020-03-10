@@ -4,11 +4,13 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 html,
 body {
   margin: 0;
   padding: 0;
+  /*background-color:#EBECF0;*/
+  min-height: 100%;
 }
 
 #app {

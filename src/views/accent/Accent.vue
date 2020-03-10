@@ -1,43 +1,46 @@
 <template>
-  <el-collapse v-model="activeNames" @change="handleChange">
-    <el-collapse-item
-      v-for="(item, index) in cityList"
-      :key="index"
-      :name="index"
-    >
-      <template slot="title">
-        <div style="background-color: #f9f9f9;width: 100%">
-          {{item.name}}
-        </div>
-      </template>
-      <el-table
-              :data="item.accentList"
-              border
-              style="width: 100%">
-        <el-table-column
-                prop="words"
-                label="文字"
-                min-width="150">
-        </el-table-column>
-        <el-table-column
-                fixed="right"
-                label="语音"
-                width="100">
-          <template v-slot:default>
-<!--            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>-->
-            <el-button type="text" size="small">编辑</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-collapse-item>
-  </el-collapse>
+  <div>
+    <el-button @click="play">播放</el-button>
+    <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item
+        v-for="(item, index) in cityList"
+        :key="index"
+        :name="index"
+      >
+        <template slot="title">
+          <div style="background-color: #f9f9f9;width: 100%">
+            {{ item.name }}
+          </div>
+        </template>
+        <el-table :data="item.accentList" border style="width: 100%">
+          <el-table-column prop="words" label="字意" min-width="150">
+          </el-table-column>
+          <el-table-column fixed="right" label="语音" width="100">
+            <template v-slot:default>
+              <!--            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>-->
+              <el-button type="text" size="small">编辑</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-collapse-item>
+    </el-collapse>
+    <div style="position: sticky;bottom: 0px">
+      <audio ref="audio">
+        <source :src="horse" type="audio/mpeg" />
+        <!--      <source src="horse.ogg" type="audio/ogg" />-->
+        您的浏览器不支持该音频格式。
+      </audio>
+    </div>
+  </div>
 </template>
 
 <script>
+import horse from "../../assets/audio/horse.mp3";
 export default {
   name: "Accent",
   data() {
     return {
+      horse: horse,
       activeNames: [],
       cityList: [
         { code: "A", name: "成都", accentList: [], load: false },
@@ -66,6 +69,9 @@ export default {
     };
   },
   methods: {
+    play() {
+      this.$refs.audio.play();
+    },
     handleChange(val) {
       if (val.length > 0) {
         const index = val[val.length - 1];
