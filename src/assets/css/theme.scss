@@ -2,7 +2,8 @@
 $ruler: 16px;
 $font-family: 'Montserrat', sans-serif;
 //颜色
-$color-white: #fff; /*白色*/
 $color-bg: #ebecf0; /*背景颜色*/
-$color-shadow: #babecc; /*阴影颜色*/
-$color-text: #61677c; /*文本颜色*/
+$color-text-shadow:#fff;/*文字阴影颜色*/
+$color-shadow-light:#fff;/*高亮阴影颜色*/
+$color-shadow-dark:#babecc;/*暗部阴影颜色*/
+$color-button-text: #61677c; /*按钮文本颜色*/

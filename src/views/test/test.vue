@@ -11,7 +11,26 @@
       <button class="button unit radius" style="margin-top:10px">
         <i class="icon el-icon-delete" />
       </button>
-      <input class="input" placeholder="Input Something" style="margin-top:10px"/>
+
+      <div class="button-group">
+        <div class="button-group-contain">
+          <button class="button-group-item top">
+            <i class="icon el-icon-plus" />
+          </button>
+          <button class="button-group-item">
+            <i class="icon el-icon-caret-right" />
+          </button>
+          <button class="button-group-item bottom">
+            <i class="icon el-icon-minus" />
+          </button>
+        </div>
+      </div>
+
+      <input
+        class="input"
+        placeholder="Input Something"
+        style="margin-top:10px"
+      />
     </div>
   </div>
 </template>
@@ -38,7 +57,53 @@ export default {
     margin: 0 auto;
   }
 }
-
+.button-group {
+  display: inline-block;
+  &-contain {
+    background-color: $color-bg;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-bg;
+    /*box-shadow: -5px -5px 20px $color-shadow-light,
+      5px 5px 20px $color-shadow-dark;*/
+    box-shadow: -2px -2px 5px $color-shadow-light,
+    2px 2px 5px $color-shadow-dark;
+    border-radius: $ruler * 20;
+  }
+  &-item {
+    font-family: $font-family;
+    border: 0;
+    outline: 0;
+    padding: $ruler;
+    background-color: $color-bg;
+    text-shadow: 1px 1px 0 $color-text-shadow;
+    color: $color-button-text;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    line-height: 0;
+    width: $ruler * 3;
+    height: $ruler * 3;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $ruler * 1.2;
+    &.top {
+      border-radius: $ruler * 20 $ruler * 20 0 0;
+    }
+    &.bottom {
+      border-radius: 0 0 $ruler * 20 $ruler * 20;
+    }
+    /*&:hover {
+      box-shadow: -2px -2px 5px $color-shadow-light,
+      2px 2px 5px $color-shadow-dark;
+    }*/
+    &:active {
+      box-shadow: inset 1px 1px 2px $color-shadow-dark,
+      inset -1px -1px 2px $color-shadow-light;
+    }
+  }
+}
 .button {
   font-family: $font-family;
   border: 0;
@@ -47,18 +112,22 @@ export default {
   border-radius: $ruler * 20;
   padding: $ruler;
   background-color: $color-bg;
-  text-shadow: 1px 1px 0 $color-white;
-  color: $color-text;
+  text-shadow: 1px 1px 0 $color-text-shadow;
+  color: $color-button-text;
   font-weight: 600;
-  box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow;
+  /*box-shadow: -5px -5px 20px $color-shadow-light,
+    5px 5px 20px $color-shadow-dark;*/
+  box-shadow: -2px -2px 5px $color-shadow-light,
+  2px 2px 5px $color-shadow-dark;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  &:hover {
-    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
-  }
+  /*&:hover {
+    box-shadow: -2px -2px 5px $color-shadow-light,
+      2px 2px 5px $color-shadow-dark;
+  }*/
   &:active {
-    box-shadow: inset 1px 1px 2px $color-shadow,
-      inset -1px -1px 2px $color-white;
+    box-shadow: inset 1px 1px 2px $color-shadow-dark,
+      inset -1px -1px 2px $color-shadow-light;
   }
   .icon {
     margin-right: $ruler/2;
@@ -77,8 +146,8 @@ export default {
     .icon {
       margin-right: 0;
     }
-    &.radius{
-      border-radius: $ruler*20;
+    &.radius {
+      border-radius: $ruler * 20;
     }
   }
 }
@@ -90,18 +159,20 @@ export default {
   border-radius: $ruler * 20;
   padding: $ruler;
   background-color: $color-bg;
-  text-shadow: 1px 1px 0 $color-white;
+  text-shadow: 1px 1px 0 $color-text-shadow;
   margin-right: $ruler/2;
-  box-shadow: inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+  /*<!--box-shadow: inset 2px 2px 5px $color-shadow-dark, inset -5px -5px 10px $color-shadow-light;-->*/
+  box-shadow: inset 1px 1px 2px $color-shadow-dark,
+    inset -1px -1px 2px $color-shadow-light;
   width: 100%;
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
   appearance: none;
   -webkit-appearance: none;
   &:focus {
-    box-shadow: inset 1px 1px 2px $color-shadow,
-      inset -1px -1px 2px $color-white;
+    /*<!--box-shadow: inset 1px 1px 2px $color-shadow-dark, inset -1px -1px 2px $color-shadow-light;-->*/
+    box-shadow: inset 2px 2px 5px $color-shadow-dark,
+      inset -5px -5px 10px $color-shadow-light;
   }
 }
-
 </style>

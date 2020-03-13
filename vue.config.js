@@ -31,6 +31,7 @@ module.exports = {
   //     }
   //   }
   // },
+  /*全局css*/
   css: {
     loaderOptions: {
       sass: {

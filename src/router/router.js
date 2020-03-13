@@ -5,10 +5,11 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: "/",
-  //   redirect: "/nasa"
-  // },
+  /*自动进入某页*/
+  {
+    path: "*",
+    redirect: "/SmartHouseKeeper/home-page"
+  },
   {
     path: "/test",
     component: () => import("../views/test/test"),
@@ -17,12 +18,28 @@ const routes = [
     }
   },
   {
-    path: "/login",
-    component: () => import("../views/login/login"),
+    path: "/SmartHouseKeeper",
+    component: () => import("../views/apps/SmartHouseKeeper/App"),
     meta: {
-      title: "登陆"
-    }
-  },
+      title: "智能家居"
+    },
+    children:[
+      {
+        path:"home-page",
+        component:()=>import("../views/apps/SmartHouseKeeper/HomePage/HomePage.vue"),
+        meta:{
+          title:'首页'
+        }
+      }
+    ]
+  }
+  // {
+  //   path: "/login",
+  //   component: () => import("../views/login/login"),
+  //   meta: {
+  //     title: "登陆"
+  //   }
+  // },
   // {
   //   path: "/",
   //   component: Layout,
