@@ -7,3 +7,21 @@ $color-text-shadow:#fff;/*文字阴影颜色*/
 $color-shadow-light:#fff;/*高亮阴影颜色*/
 $color-shadow-dark:#babecc;/*暗部阴影颜色*/
 $color-button-text: #61677c; /*按钮文本颜色*/
+$color-button-center:#b90000;/*按钮中心颜色*/
+
+//凸曲面
+@mixin neumorphism-convex{
+  box-shadow: -6px -6px 15px 3px $color-shadow-light, 4px 4px 15px $color-shadow-dark;
+}
+//凸平面
+@mixin neumorphism-flat{
+  box-shadow: -2px -2px 5px $color-shadow-light, 2px 2px 5px $color-shadow-dark;
+}
+//凹曲面
+@mixin neumorphism-concave{
+
+}
+//压平面
+@mixin neumorphism-pressed{
+  box-shadow: inset 1px 1px 2px $color-shadow-dark, inset -1px -1px 2px $color-shadow-light;
+}

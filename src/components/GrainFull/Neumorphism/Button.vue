@@ -58,18 +58,20 @@ export default {
   border: 0;
   outline: 0;
   font-size: $ruler;
-  border-radius: $ruler * 20;
   padding: 0;
-  background-color: $color-bg;
   text-shadow: 1px 1px 0 $color-text-shadow;
   color: $color-button-text;
-  font-weight: 600;
-  box-shadow: -2px -2px 5px $color-shadow-light, 2px 2px 5px $color-shadow-dark;
   transition: all .2s ease-in-out;
+  font-weight: 600;
+  border-radius: $ruler * 20;
+  background-color: $color-bg;
+  @include neumorphism-flat;
+  /*box-shadow: -2px -2px 5px $color-shadow-light, 2px 2px 5px $color-shadow-dark;*/
   &:active,
   &.click {
-    box-shadow: inset 1px 1px 2px $color-shadow-dark,
-      inset -1px -1px 2px $color-shadow-light;
+    @include neumorphism-pressed;
+    /*box-shadow: inset 1px 1px 2px $color-shadow-dark,
+      inset -1px -1px 2px $color-shadow-light;*/
   }
   i {
     margin-right: $ruler/2;

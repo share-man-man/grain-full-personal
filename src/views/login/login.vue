@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 $ruler: 16px;
 $color-red: #ae1100;
-$color-bg: #ebecf0;
+$color-bg: #000000;
 $color-shadow: #babecc;
 $color-white: #fff;
 

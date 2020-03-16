@@ -14,6 +14,9 @@ import store from "./store/store";
 // import '@vant/touch-emulator';/*桌面端mouse事件*/
 // Vue.use(Vant);
 
+//引入自定义icon
+import "./assets/icon/iconfont"
+
 // 全局js
 import request from "./utils/request";
 Vue.prototype.$utilRequest = request;
