@@ -4,14 +4,34 @@
       <div class="hello-text">
         Good Morning , Grain Full
       </div>
-      <grain-full-button unit radius size="30" style="margin-right: 5px">
+      <!--      <grain-full-button width="60px" height="30px" style="margin-right: 5px">-->
+      <!--        <i class="upper-right-button"></i>-->
+      <!--      </grain-full-button>-->
+      <!--      <grain-full-button type="unit" width="30px" height="30px">-->
+      <!--        <i class="upper-right-button"></i>-->
+      <!--      </grain-full-button>-->
+      <grain-full-button type="circular" width="30px" style="margin-right: 5px">
         <i class="upper-right-button"></i>
       </grain-full-button>
     </div>
     <div class="scroll-panel">
-      <grain-full-panel></grain-full-panel>
-      <grain-full-panel></grain-full-panel>
-      <grain-full-panel></grain-full-panel>
+      <grain-full-panel
+        v-model="activePanel[0]"
+        icon="#icon-guizi-"
+      ></grain-full-panel>
+      <grain-full-panel v-model="activePanel[1]"></grain-full-panel>
+      <grain-full-panel
+        v-model="activePanel[2]"
+        icon="#icon-chufangweibolu-"
+      ></grain-full-panel>
+      <grain-full-panel
+        v-model="activePanel[3]"
+        icon="#icon-jiajuchuang-"
+      ></grain-full-panel>
+      <grain-full-panel
+        v-model="activePanel[4]"
+        icon="#icon-jiajufengganji-"
+      ></grain-full-panel>
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
     </div>
@@ -28,7 +48,9 @@ export default {
     [Panel.name]: Panel
   },
   data() {
-    return {};
+    return {
+      activePanel: [false, false, false, false, true]
+    };
   },
   mounted() {
     // console.log(Button.name);
@@ -64,41 +86,5 @@ export default {
     width: 0;
     background: transparent;
   }
-}
-
-.test {
-  --positionX: 7px;
-  --positionXOpposite: -7px;
-  --positionY: 7px;
-  --positionYOpposite: -7px;
-  --angle: 145deg;
-  --blur: 20px;
-  --textColor: #001f3f;
-  --textColorOpposite: #ebecf0;
-  --baseColor: #ebecf0;
-  --darkColor: #dbdbdf;
-  --lightColor: #fbfdff;
-  --firstGradientColor: #d4d4d8;
-  --secondGradientColor: #fbfdff;
-  color: var(--textColor);
-  font-family: Muli, sans-serif;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: var(--size);
-  height: var(--size);
-  border-radius: var(--radius);
-  background: linear-gradient(
-    var(--angle),
-    var(--secondGradientColor),
-    var(--firstGradientColor)
-  );
-  box-shadow: var(--positionX) var(--positionY) var(--blur) var(--darkColor),
-    var(--positionXOpposite) var(--positionYOpposite) var(--blur)
-      var(--lightColor);
-  --size: 300px;
-  --radius: 60px;
 }
 </style>

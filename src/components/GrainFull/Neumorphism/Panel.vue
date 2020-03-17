@@ -1,49 +1,60 @@
 <template>
-  <div class="panel">
+  <div :class="objClass" @click="click">
     <slot>
-      <svg
-              class="icon"
-              style="font-size: 20px;"
-              aria-hidden="true"
-      >
-        <use xlink:href="#icon-chufangxiyouyan-"></use>
+      <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+        <use :xlink:href="icon"></use>
       </svg>
-      <p style="margin:0 0 0 10px;font-size: 12px">油烟机</p>
+      <p style="margin:0 0 0 10px;font-size: 12px">Panel框</p>
     </slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "GrainFullPanel"
+  name: "GrainFullPanel",
+  props:{
+    "value":{
+      type:Boolean,
+    },
+    //icon图标
+    icon:{
+      type:String,
+      default: ''
+    }
+  },
+  computed:{
+    objClass(){
+      return {
+        panel:true,
+        active:this.value
+      }
+    }
+  },
+  methods: {
+    click() {
+      this.$emit("input", !this.value);
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .panel {
+  @include neumorphism-convex(42px,88px);
   flex: 0 0 0;
   display: flex;
   align-items: center;
   white-space: pre;
-  font-family: $font-family;
-  //border: 0;
   outline: 0;
   font-size: $ruler;
   margin: 20px 30px;
   padding: 10px;
-  text-shadow: 1px 1px 0 $color-text-shadow;
-  text-align: center;
-  color: $color-button-text;
   font-weight: 600;
-  transition: all 0.2s ease-in-out;
-  border-radius: 12px;
-  background-color: $color-bg;
-  border: 2px solid #e4e4e4;
-  @include neumorphism-convex;
-  /*border-radius: 60px;
-  background: linear-gradient(145deg, #fbfdff, #d4d4d8);
-  box-shadow:  2px 2px 10px #dbdbdf,
-  -2px -2px 10px #fbfdff;*/
+  border: 1px solid #e4e4e4;
+  &.active {
+    @include neumorphism-concave(42px,88px);
+    color: $color-active;
+  }
 }
 //icon图标
 .icon {
