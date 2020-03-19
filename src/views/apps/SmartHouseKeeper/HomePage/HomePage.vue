@@ -4,56 +4,98 @@
       <div class="hello-text">
         Good Morning , Grain Full
       </div>
-      <!--      <grain-full-button width="60px" height="30px" style="margin-right: 5px">-->
-      <!--        <i class="upper-right-button"></i>-->
-      <!--      </grain-full-button>-->
-      <!--      <grain-full-button type="unit" width="30px" height="30px">-->
-      <!--        <i class="upper-right-button"></i>-->
-      <!--      </grain-full-button>-->
       <grain-full-button type="circular" width="30px" style="margin-right: 5px">
         <i class="upper-right-button"></i>
       </grain-full-button>
     </div>
     <div class="scroll-panel">
       <grain-full-panel
-        v-model="activePanel[0]"
+        :active="activePanel[0]"
+        @click.native="activePanel.splice(0, 1, !activePanel[0])"
         icon="#icon-guizi-"
-      ></grain-full-panel>
-      <grain-full-panel v-model="activePanel[1]"></grain-full-panel>
+        style="margin: 15px 20px"
+      >
+        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+          <use xlink:href="#icon-guizi-"></use>
+        </svg>
+        <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
+      </grain-full-panel>
       <grain-full-panel
-        v-model="activePanel[2]"
-        icon="#icon-chufangweibolu-"
-      ></grain-full-panel>
-      <grain-full-panel
-        v-model="activePanel[3]"
-        icon="#icon-jiajuchuang-"
-      ></grain-full-panel>
-      <grain-full-panel
-        v-model="activePanel[4]"
-        icon="#icon-jiajufengganji-"
-      ></grain-full-panel>
+        :active="activePanel[1]"
+        @click.native="activePanel.splice(1, 1, !activePanel[1])"
+        icon="#icon-guizi-"
+        style="margin: 15px 20px"
+      >
+        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+          <use xlink:href="#icon-guizi-"></use>
+        </svg>
+        <p style="margin:0 0 0 10px;font-size: 16px">
+          Panel框
+        </p> </grain-full-panel
+      ><grain-full-panel
+        :active="activePanel[2]"
+        @click.native="activePanel.splice(2, 1, !activePanel[2])"
+        icon="#icon-guizi-"
+        style="margin: 15px 20px"
+      >
+        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+          <use xlink:href="#icon-guizi-"></use>
+        </svg>
+        <p style="margin:0 0 0 10px;font-size: 16px">
+          Panel框
+        </p> </grain-full-panel
+      ><grain-full-panel
+        :active="activePanel[3]"
+        @click.native="activePanel.splice(3, 1, !activePanel[3])"
+        icon="#icon-guizi-"
+        style="margin: 15px 20px"
+      >
+        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+          <use xlink:href="#icon-guizi-"></use>
+        </svg>
+        <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
+      </grain-full-panel>
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
     </div>
+    <grain-full-tab v-model="tabBarIndex" :lazy-render="false" style="margin-top: 20px">
+<!--      <grain-full-tab-item name="test1">111111</grain-full-tab-item>-->
+      <grain-full-tab-item name="test1"><test-compo name="111"></test-compo></grain-full-tab-item>
+      <grain-full-tab-item name="test2"><test-compo name="222"></test-compo></grain-full-tab-item>
+      <grain-full-tab-item name="test3"><test-compo name="333"></test-compo></grain-full-tab-item>
+      <grain-full-tab-item name="test4"><test-compo name="444"></test-compo></grain-full-tab-item>
+    </grain-full-tab>
   </div>
 </template>
 
 <script>
-import Button from "../../../../components/GrainFull/Neumorphism/Button";
-import Panel from "../../../../components/GrainFull/Neumorphism/Panel";
+import GrainFullButton from "../../../../components/GrainFull/Neumorphism/GrainFullButton";
+import GrainFullPanel from "../../../../components/GrainFull/Neumorphism/GrainFullPanel";
+import GrainFullTab from "../../../../components/GrainFull/Neumorphism/GrainFullTab";
+import GrainFullTabItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabItem";
+import TestCompo from "../../../../components/GrainFull/Neumorphism/TestCompo";
 export default {
   name: "HomePage",
   components: {
-    [Button.name]: Button,
-    [Panel.name]: Panel
+    TestCompo,
+    GrainFullTabItem,
+    GrainFullTab,
+    GrainFullButton,
+    GrainFullPanel
   },
   data() {
     return {
-      activePanel: [false, false, false, false, true]
+      activePanel: [false, false, true, false, true],
+      tabBarIndex: 0
     };
   },
   mounted() {
     // console.log(Button.name);
+  },
+  methods: {
+    test() {
+      this.activePanel.splice(0, 1, !this.activePanel[0]);
+    }
   }
 };
 </script>
@@ -71,8 +113,17 @@ export default {
 .upper-right-button {
   height: 4px;
   width: 4px;
-  background-color: $color-button-center;
+  background-color: #b90000;
   border-radius: 2px;
+}
+
+//icon图标
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 
 .scroll-panel {

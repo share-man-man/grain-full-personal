@@ -50,20 +50,21 @@ export default {
     comStyle:function () {
       return this.configStyle[this.type]
     }
-  }
+  },
 };
 </script>
 
 <style scoped lang="scss">
 .default {
-  @include neumorphism-flat;
+  @include neumorphism-default;
+  @include neumorphism('flat',30px,15px,3px,0.14,6px);
   border: 0;
   outline: 0;
   padding: 0;
   font-weight: 600;
   &:active,
   &.click {
-    @include neumorphism-pressed;
+    @include neumorphism('pressed',30px,15px,3px,0.14,6px);
   }
   /*i {
     margin-right: $ruler/2;

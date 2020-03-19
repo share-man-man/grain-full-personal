@@ -24,7 +24,7 @@ export default {
 .container {
   min-width: 100vw;
   min-height: 100vh;
-  background-color: $color-bg;
+  background-color: $GrainFullBackgroundColor;
   &-page {
     /*padding: $ruler;*/
     width: 100%;
