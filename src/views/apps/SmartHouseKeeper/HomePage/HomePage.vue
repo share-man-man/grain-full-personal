@@ -58,12 +58,24 @@
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
     </div>
-    <grain-full-tab v-model="tabBarIndex" :lazy-render="false" style="margin-top: 20px">
-<!--      <grain-full-tab-item name="test1">111111</grain-full-tab-item>-->
-      <grain-full-tab-item name="test1"><test-compo name="111"></test-compo></grain-full-tab-item>
-      <grain-full-tab-item name="test2"><test-compo name="222"></test-compo></grain-full-tab-item>
-      <grain-full-tab-item name="test3"><test-compo name="333"></test-compo></grain-full-tab-item>
-      <grain-full-tab-item name="test4"><test-compo name="444"></test-compo></grain-full-tab-item>
+    <grain-full-tab
+      v-model="tabBarIndex"
+      :lazy-render="false"
+      style="margin-top: 20px"
+    >
+      <!--      <grain-full-tab-item name="test1">111111</grain-full-tab-item>-->
+      <grain-full-tab-item name="test1"
+        ><test-compo name="111"></test-compo
+      ></grain-full-tab-item>
+      <grain-full-tab-item name="test2"
+        ><test-compo name="222"></test-compo
+      ></grain-full-tab-item>
+      <grain-full-tab-item name="test3"
+        ><test-compo name="333"></test-compo
+      ></grain-full-tab-item>
+      <grain-full-tab-item name="test4"
+        ><test-compo name="444"></test-compo
+      ></grain-full-tab-item>
     </grain-full-tab>
   </div>
 </template>
@@ -89,9 +101,7 @@ export default {
       tabBarIndex: 0
     };
   },
-  mounted() {
-    // console.log(Button.name);
-  },
+  mounted() {},
   methods: {
     test() {
       this.activePanel.splice(0, 1, !this.activePanel[0]);
