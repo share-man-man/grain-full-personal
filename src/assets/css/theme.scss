@@ -3,19 +3,19 @@ $ruler: 16px;
 
 //新拟物风格样式
 $GrainFullRuler:16px;
-$GrainFullBackgroundColor:#ebecf0;/*背景颜色*/
+$GrainFullBackgroundColor:#f3f4f8;/*背景颜色*/
 $GrainFullFontSize:$GrainFullRuler/2;/*字体大小*/
 $GrainFullFontFamily:'Montserrat', sans-serif;/*字体*/
 //$GrainFullWidth: $GrainFullRuler*2; /*宽*/
 //$GrainFullHeight: $GrainFullRuler; /*高*/
 $GrainFullAngle: 125deg;/*渐变角度*/
-$GrainFullTextColor: #61677c;/*文本颜色*/
+$GrainFullTextColor: #8b8da0;/*文本颜色*/
 $GrainFullTextShadowColor:#fff;/*文本阴影颜色*/
 //$GrainFullDarkColor: #dadbdf;/*暗部颜色*/
 //$GrainFullLightColor: #ffffff;/*高亮颜色*/
 $GrainFullFirstGradientColor: #fbfdff;/*背景第一梯度颜色*/
-$GrainFullSecondGradientColor: #e0e0e4;/*背景第二梯度颜色*/
-$GrainFullMainColor:#6ecba6;/*主色调*/
+$GrainFullSecondGradientColor: #ebedef;/*背景第二梯度颜色*/
+$GrainFullMainColor:#52dea5;/*主色调*/
 //$GrainFullTabBarColor:#cfd2dc;/*tab bar颜色*/
 
 @mixin neumorphism-default{
@@ -27,7 +27,7 @@ $GrainFullMainColor:#6ecba6;/*主色调*/
   background-color: $GrainFullBackgroundColor;
   transition: all .5s ease-in-out;
 }
-
+//凸曲面
 @mixin neumorphism-convex ($radius,$x,$y,$blur,$darkColor,$lightColor){
   //@include neumorphism-default;
   border-radius: $radius;
@@ -67,4 +67,18 @@ $GrainFullMainColor:#6ecba6;/*主色调*/
   @if($type == 'pressed'){
     @include neumorphism-pressed($radius,$distance,$distance,$blur,($GrainFullBackgroundColor*(1-$intensity)),($GrainFullBackgroundColor/(1-$intensity)))
   }
+}
+
+/* 全局过渡动画 */
+.grain-full-slide-fade-enter-active {
+  /*transition: all 0.3s ease;*/
+  animation: bounce-in .3s ease;
+}
+.grain-full-slide-fade-leave-active {
+  /*transition: all 0.3s ease;*/
+  animation: bounce-in .3s ease reverse;
+}
+.grain-full-slide-fade-enter, .grain-full-slide-fade-leave-to{
+  /*transform: translateY(100%);*/
+  /*opacity: 0;*/
 }

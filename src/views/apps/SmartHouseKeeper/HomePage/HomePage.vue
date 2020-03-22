@@ -15,9 +15,7 @@
         icon="#icon-guizi-"
         style="margin: 15px 20px"
       >
-        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
-          <use xlink:href="#icon-guizi-"></use>
-        </svg>
+        <grain-full-icon name="#icon-guizi-" />
         <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
       </grain-full-panel>
       <grain-full-panel
@@ -26,9 +24,7 @@
         icon="#icon-guizi-"
         style="margin: 15px 20px"
       >
-        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
-          <use xlink:href="#icon-guizi-"></use>
-        </svg>
+        <grain-full-icon name="#icon-guizi-" />
         <p style="margin:0 0 0 10px;font-size: 16px">
           Panel框
         </p> </grain-full-panel
@@ -38,9 +34,7 @@
         icon="#icon-guizi-"
         style="margin: 15px 20px"
       >
-        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
-          <use xlink:href="#icon-guizi-"></use>
-        </svg>
+        <grain-full-icon name="#icon-guizi-" />
         <p style="margin:0 0 0 10px;font-size: 16px">
           Panel框
         </p> </grain-full-panel
@@ -50,9 +44,7 @@
         icon="#icon-guizi-"
         style="margin: 15px 20px"
       >
-        <svg class="icon" aria-hidden="true" style="font-size: 20px;">
-          <use xlink:href="#icon-guizi-"></use>
-        </svg>
+        <grain-full-icon name="#icon-guizi-" />
         <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
       </grain-full-panel>
       <!--防止右边margin无效-->
@@ -63,10 +55,10 @@
       :lazy-render="false"
       style="margin-top: 20px"
     >
-      <!--      <grain-full-tab-item name="test1">111111</grain-full-tab-item>-->
       <grain-full-tab-item name="test1"
-        ><test-compo name="111"></test-compo
-      ></grain-full-tab-item>
+        >
+        <usual/>
+      </grain-full-tab-item>
       <grain-full-tab-item name="test2"
         ><test-compo name="222"></test-compo
       ></grain-full-tab-item>
@@ -86,9 +78,15 @@ import GrainFullPanel from "../../../../components/GrainFull/Neumorphism/GrainFu
 import GrainFullTab from "../../../../components/GrainFull/Neumorphism/GrainFullTab";
 import GrainFullTabItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabItem";
 import TestCompo from "../../../../components/GrainFull/Neumorphism/TestCompo";
+import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFullIcon";
+import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
+import Usual from "../components/Usual";
 export default {
   name: "HomePage",
   components: {
+    Usual,
+    GrainFullSwitch,
+    GrainFullIcon,
     TestCompo,
     GrainFullTabItem,
     GrainFullTab,
@@ -98,7 +96,8 @@ export default {
   data() {
     return {
       activePanel: [false, false, true, false, true],
-      tabBarIndex: 0
+      tabBarIndex: 0,
+      showContent: true
     };
   },
   mounted() {},
