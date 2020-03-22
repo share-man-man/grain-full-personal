@@ -1,9 +1,9 @@
 <template>
     <div class="usual">
-        <grain-full-switch style="margin: 20px"/>
-        <grain-full-switch style="margin: 20px"/>
-        <grain-full-switch style="margin: 20px"/>
-        <grain-full-switch style="margin: 20px"/>
+        <grain-full-switch v-model="button1" style="margin: 20px"/>
+        <grain-full-switch v-model="button1" style="margin: 20px"/>
+        <grain-full-switch v-model="button1" style="margin: 20px"/>
+        <grain-full-switch v-model="button1" style="margin: 20px"/>
     </div>
 </template>
 
@@ -11,7 +11,12 @@
     import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
     export default {
         name: "Usual",
-        components: {GrainFullSwitch}
+        components: {GrainFullSwitch},
+        data(){
+            return {
+                button1:false
+            }
+        }
     }
 </script>
 

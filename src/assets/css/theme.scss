@@ -16,7 +16,10 @@ $GrainFullTextShadowColor:#fff;/*文本阴影颜色*/
 $GrainFullFirstGradientColor: #fbfdff;/*背景第一梯度颜色*/
 $GrainFullSecondGradientColor: #ebedef;/*背景第二梯度颜色*/
 $GrainFullMainColor:#52dea5;/*主色调*/
-//$GrainFullTabBarColor:#cfd2dc;/*tab bar颜色*/
+
+$GrainFullSwitchClickBackGroundColor:#dfe7f4;/*开关背景颜色*/
+$GrainFullSwitchClickOnBackGroundColor:$GrainFullMainColor;/*激活背景颜色*/
+$GrainFullSwitchClickNodeBackGroundColor:#eff0f5;/*开关颜色*/
 
 @mixin neumorphism-default{
   text-shadow: 1px 1px 0 $GrainFullTextShadowColor;
