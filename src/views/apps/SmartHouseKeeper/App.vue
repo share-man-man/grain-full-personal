@@ -1,10 +1,9 @@
 <template>
   <div
     class="container"
+    :style="{ height: windowHeight + 'px', width: windowWidth + 'px' }"
   >
-    <div class="container-page">
-        <router-view/>
-    </div>
+    <router-view />
   </div>
 </template>
 
@@ -22,13 +21,6 @@ export default {
 
 <style scoped lang="scss">
 .container {
-  min-width: 100vw;
-  min-height: 100vh;
   background-color: $GrainFullBackgroundColor;
-  &-page {
-    /*padding: $ruler;*/
-    width: 100%;
-    margin: 0 auto;
-  }
 }
 </style>

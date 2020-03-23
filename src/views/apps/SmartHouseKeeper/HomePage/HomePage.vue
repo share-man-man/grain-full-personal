@@ -55,9 +55,8 @@
       :lazy-render="false"
       style="margin-top: 20px"
     >
-      <grain-full-tab-item name="test1"
-        >
-        <usual/>
+      <grain-full-tab-item name="test1">
+        <usual />
       </grain-full-tab-item>
       <grain-full-tab-item name="test2"
         ><test-compo name="222"></test-compo
@@ -79,13 +78,11 @@ import GrainFullTab from "../../../../components/GrainFull/Neumorphism/GrainFull
 import GrainFullTabItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabItem";
 import TestCompo from "../../../../components/GrainFull/Neumorphism/TestCompo";
 import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFullIcon";
-import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
 import Usual from "../components/Usual";
 export default {
   name: "HomePage",
   components: {
     Usual,
-    GrainFullSwitch,
     GrainFullIcon,
     TestCompo,
     GrainFullTabItem,

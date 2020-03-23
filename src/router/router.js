@@ -23,13 +23,21 @@ const routes = [
     meta: {
       title: "智能家居"
     },
-    children:[
+    children: [
       {
-        path:"home-page",
-        component:()=>import("../views/apps/SmartHouseKeeper/HomePage/HomePage.vue"),
-        meta:{
-          title:'首页'
-        }
+        path: "",
+        component: () =>
+          import("../views/apps/SmartHouseKeeper/Layout/Layout.vue"),
+        children: [
+          {
+            path: "home-page",
+            component: () =>
+              import("../views/apps/SmartHouseKeeper/HomePage/HomePage.vue"),
+            meta: {
+              title: "首页"
+            }
+          }
+        ]
       }
     ]
   }

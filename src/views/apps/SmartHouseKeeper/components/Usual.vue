@@ -1,9 +1,9 @@
 <template>
   <div class="usual">
-    <grain-full-switch v-model="button1" style="margin: 20px" />
-    <grain-full-switch v-model="button1" style="margin: 20px" />
-    <grain-full-switch v-model="button1" style="margin: 20px" />
-    <grain-full-switch v-model="button1" style="margin: 20px" />
+    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
+    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
+    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
+    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
   </div>
 </template>
 
