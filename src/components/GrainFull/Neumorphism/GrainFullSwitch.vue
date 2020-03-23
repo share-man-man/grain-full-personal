@@ -1,8 +1,8 @@
 <template>
   <div class="switch">
-    <grain-full-icon name="#icon-jiajudeng-" :size="50" />
+    <grain-full-icon :name="iconName" :size="50" />
     <span class="p">
-      Golang
+      {{name}}
     </span>
     <div>
       <div @click="$emit('input', !value)" :class="clickClass">
@@ -21,6 +21,12 @@ export default {
     value: {
       type: Boolean,
       default: false
+    },
+    iconName:{
+      type: String
+    },
+    name:{
+      type:String
     }
   },
   computed: {
@@ -84,8 +90,8 @@ export default {
 .p {
   @include neumorphism-default;
   display: block;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   margin-top: 5px;
 }
 </style>

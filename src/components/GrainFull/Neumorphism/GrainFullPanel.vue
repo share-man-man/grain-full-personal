@@ -57,6 +57,9 @@ export default {
   &.active {
     @include neumorphism("concave",40px, 10px, 5px, 0.13, 9px);
     color: $GrainFullMainColor;
+    & svg{
+      color: $GrainFullMainColor;
+    }
   }
 }
 </style>

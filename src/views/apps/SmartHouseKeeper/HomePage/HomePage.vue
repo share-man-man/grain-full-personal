@@ -10,14 +10,15 @@
     </div>
     <div class="scroll-panel">
       <grain-full-panel
-        v-for="(item) in statusList"
+        v-for="(item, index) in statusList"
+        :key="index"
         :active="item.active"
         @click.native="item.active = !item.active"
         icon="#icon-guizi-"
         style="margin: 15px 0 15px 30px"
       >
         <grain-full-icon :name="item.icon" />
-        <p style="margin:0 0 0 5px;font-size: 16px">{{item.name}}</p>
+        <p style="margin:0 0 0 5px;font-size: 13px;font-weight: 500">{{ item.name }}</p>
       </grain-full-panel>
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
@@ -27,16 +28,16 @@
       :lazy-render="false"
       style="margin-top: 20px"
     >
-      <grain-full-tab-item name="test1">
+      <grain-full-tab-item name="Usual">
         <usual />
       </grain-full-tab-item>
-      <grain-full-tab-item name="test2"
+      <grain-full-tab-item name="LivingRoom"
         ><test-compo name="222"></test-compo
       ></grain-full-tab-item>
-      <grain-full-tab-item name="test3"
+      <grain-full-tab-item name="BedRoom"
         ><test-compo name="333"></test-compo
       ></grain-full-tab-item>
-      <grain-full-tab-item name="test4"
+      <grain-full-tab-item name="BathRoom"
         ><test-compo name="444"></test-compo
       ></grain-full-tab-item>
     </grain-full-tab>
@@ -68,10 +69,10 @@ export default {
       tabBarIndex: 0,
       showContent: true,
       statusList: [
-        { name: "At Home", active: false, icon: "#icon-guizi-" },
-        { name: "Going Out", active: false, icon: "#icon-guizi-" },
-        { name: "Sleeping", active: false, icon: "#icon-guizi-" },
-        { name: "Napping", active: false, icon: "#icon-guizi-" }
+        { name: "At Home", active: false, icon: "#icon-home" },
+        { name: "Going Out", active: false, icon: "#icon-go-out" },
+        { name: "Sleeping", active: false, icon: "#icon-sleep" },
+        { name: "Napping", active: false, icon: "#icon-chair" }
       ]
     };
   },

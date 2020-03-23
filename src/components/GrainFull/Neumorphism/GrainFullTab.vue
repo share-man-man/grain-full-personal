@@ -10,7 +10,7 @@
         {{ item.name }}
       </div>
       <div @click="showContent = !showContent" :class="tabSwitchClass">
-        <grain-full-icon name="#icon-xuanze" :style="tabSwitchIconStyle" />
+        <grain-full-icon name="#icon-arrow-left" :style="tabSwitchIconStyle" />
       </div>
     </div>
     <transition name="grain-full-slide-fade">
@@ -61,7 +61,7 @@ export default {
     tabSwitchIconStyle() {
       return {
         transition: "all .5s ease-in-out",
-        transform: `rotate(${this.showContent ? "0" : "90"}deg)`
+        transform: `rotate(${this.showContent ? "-90" : "0"}deg)`
       };
     }
   },
@@ -137,14 +137,14 @@ export default {
   }
   &-switch {
     @include neumorphism-default;
-    @include neumorphism("flat", 30px, 15px, 3px, 0.14, 6px);
+    @include neumorphism("flat", 30px, 15px, 1px, 0.14, 6px);
     @include item-pbulic;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
     &.active {
-      @include neumorphism("pressed", 30px, 15px, 3px, 0.14, 6px);
+      @include neumorphism("pressed", 30px, 15px, 1px, 0.14, 6px);
       @include item-pbulic;
       svg{
         color: $GrainFullMainColor;

@@ -1,9 +1,13 @@
 <template>
   <div class="usual">
-    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
-    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
-    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
-    <grain-full-switch v-model="button1" style="margin: 20px 20px 0px 20px"/>
+    <grain-full-switch
+      v-for="(item, index) in switchList"
+      :key="index"
+      v-model="item.active"
+      :icon-name="item.iconName"
+      :name="item.name"
+      style="margin: 20px 20px 20px 20px"
+    />
   </div>
 </template>
 
@@ -14,7 +18,12 @@ export default {
   components: { GrainFullSwitch },
   data() {
     return {
-      button1: false
+      switchList: [
+        { active: false, iconName: "#icon-sound",name:"SoundBox" },
+        { active: false, iconName: "#icon-fridge",name:"Fridge" },
+        { active: false, iconName: "#icon-jiajudeng-",name:"PorchLight" },
+        { active: false, iconName: "#icon-jiajukongtiao-",name:"A/C" },
+      ]
     };
   }
 };
@@ -24,7 +33,7 @@ export default {
 .usual {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 </style>

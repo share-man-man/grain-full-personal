@@ -7,9 +7,10 @@
     <!--页脚-->
     <div class="foot">
       <grain-full-tab-bar>
-        <grain-full-tab-bar-item></grain-full-tab-bar-item>
-        <grain-full-tab-bar-item></grain-full-tab-bar-item>
-        <grain-full-tab-bar-item></grain-full-tab-bar-item>
+        <grain-full-tab-bar-item
+                v-for="(item,index) in tabBarList"
+                :key="index"
+                :icon-name="item.iconName"/>
       </grain-full-tab-bar>
     </div>
   </div>
@@ -20,7 +21,13 @@ import GrainFullTabBar from "../../../../components/GrainFull/Neumorphism/GrainF
 import GrainFullTabBarItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabBarItem";
 export default {
   name: "Layout",
-  components: { GrainFullTabBar, GrainFullTabBarItem }
+  components: { GrainFullTabBar, GrainFullTabBarItem },
+  data() {
+    return {
+      tabBarIndex: 0,
+      tabBarList: [{ iconName: "#icon-home"},{ iconName: "#icon-statistic"},{ iconName: "#icon-mine"}]
+    };
+  }
 };
 </script>
 

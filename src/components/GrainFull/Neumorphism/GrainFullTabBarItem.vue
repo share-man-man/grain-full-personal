@@ -1,7 +1,7 @@
 <template>
   <div class="tab-bar-item">
     <grain-full-button type="unit" width="40px" height="40px">
-      <grain-full-icon name="#icon-jia" />
+      <grain-full-icon :name="iconName" />
     </grain-full-button>
     <p class="p">Home</p>
   </div>
@@ -12,7 +12,12 @@ import GrainFullButton from "./GrainFullButton";
 import GrainFullIcon from "./GrainFullIcon";
 export default {
   name: "GrainFullTabBarItem",
-  components: { GrainFullButton, GrainFullIcon }
+  components: { GrainFullButton, GrainFullIcon },
+  props: {
+    iconName: {
+      type: String
+    }
+  }
 };
 </script>
 
