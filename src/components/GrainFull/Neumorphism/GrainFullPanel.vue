@@ -50,10 +50,10 @@ export default {
   white-space: pre;
   outline: 0;
   /*font-size: $GrainFullRuler;*/
-  margin: 15px 15px;
-  padding: 10px;
+  margin: 10px 20px;
+  padding: 10px 5px;
   font-weight: 600;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #f1f1f1;
   &.active {
     @include neumorphism("concave",40px, 10px, 5px, 0.13, 9px);
     color: $GrainFullMainColor;

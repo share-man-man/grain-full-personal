@@ -10,42 +10,14 @@
     </div>
     <div class="scroll-panel">
       <grain-full-panel
-        :active="activePanel[0]"
-        @click.native="activePanel.splice(0, 1, !activePanel[0])"
+        v-for="(item) in statusList"
+        :active="item.active"
+        @click.native="item.active = !item.active"
         icon="#icon-guizi-"
-        style="margin: 15px 20px"
+        style="margin: 15px 0 15px 30px"
       >
-        <grain-full-icon name="#icon-guizi-" />
-        <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
-      </grain-full-panel>
-      <grain-full-panel
-        :active="activePanel[1]"
-        @click.native="activePanel.splice(1, 1, !activePanel[1])"
-        icon="#icon-guizi-"
-        style="margin: 15px 20px"
-      >
-        <grain-full-icon name="#icon-guizi-" />
-        <p style="margin:0 0 0 10px;font-size: 16px">
-          Panel框
-        </p> </grain-full-panel
-      ><grain-full-panel
-        :active="activePanel[2]"
-        @click.native="activePanel.splice(2, 1, !activePanel[2])"
-        icon="#icon-guizi-"
-        style="margin: 15px 20px"
-      >
-        <grain-full-icon name="#icon-guizi-" />
-        <p style="margin:0 0 0 10px;font-size: 16px">
-          Panel框
-        </p> </grain-full-panel
-      ><grain-full-panel
-        :active="activePanel[3]"
-        @click.native="activePanel.splice(3, 1, !activePanel[3])"
-        icon="#icon-guizi-"
-        style="margin: 15px 20px"
-      >
-        <grain-full-icon name="#icon-guizi-" />
-        <p style="margin:0 0 0 10px;font-size: 16px">Panel框</p>
+        <grain-full-icon :name="item.icon" />
+        <p style="margin:0 0 0 5px;font-size: 16px">{{item.name}}</p>
       </grain-full-panel>
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
@@ -94,7 +66,13 @@ export default {
     return {
       activePanel: [false, false, true, false, true],
       tabBarIndex: 0,
-      showContent: true
+      showContent: true,
+      statusList: [
+        { name: "At Home", active: false, icon: "#icon-guizi-" },
+        { name: "Going Out", active: false, icon: "#icon-guizi-" },
+        { name: "Sleeping", active: false, icon: "#icon-guizi-" },
+        { name: "Napping", active: false, icon: "#icon-guizi-" }
+      ]
     };
   },
   mounted() {},
