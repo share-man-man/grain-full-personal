@@ -39,7 +39,7 @@ const routes = [
           },
           {
             path: "statistic",
-            component: () => import("../views/test/test"),
+            component: () => import("../views/apps/SmartHouseKeeper/Data/Data.vue"),
             meta: {
               title: "统计"
             }

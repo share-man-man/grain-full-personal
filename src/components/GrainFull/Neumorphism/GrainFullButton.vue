@@ -1,5 +1,5 @@
 <template>
-  <button :class="['default', type]" :style="comStyle">
+  <button :class="['default', type, click ? 'click' : '']" :style="comStyle">
     <!--    <i class="icon el-icon-delete" />-->
     <slot></slot>
   </button>
@@ -23,54 +23,58 @@ export default {
     height: {
       type: String,
       default: "44px"
+    },
+    click: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      click: false,
-      configStyle:{
+      configStyle: {
         default: {
-          'width': this.width,
-          'height': this.height
+          width: this.width,
+          height: this.height
         },
-        unit:{
-          'width': this.width,
-          'height': this.width,
-          'border-radius': '25%'
+        unit: {
+          width: this.width,
+          height: this.width,
+          "border-radius": "25%"
         },
-        circular:{
-          'width': this.width,
-          'height': this.width,
-          'border-radius': '50%'
+        circular: {
+          width: this.width,
+          height: this.width,
+          "border-radius": "50%"
         }
       }
     };
   },
   computed: {
-    comStyle:function () {
-      return this.configStyle[this.type]
+    comStyle: function() {
+      return this.configStyle[this.type];
     }
-  },
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .default {
   @include neumorphism-default;
-  @include neumorphism('flat',30px,15px,3px,0.14,6px);
+  @include neumorphism("flat", 30px, 15px, 3px, 0.14, 6px);
   border: 0;
   outline: 0;
   padding: 0;
   font-weight: 600;
   &:active,
   &.click {
-    @include neumorphism('pressed',30px,15px,3px,0.14,6px);
+    @include neumorphism("pressed", 30px, 15px, 3px, 0.14, 6px);
   }
   /*i {
     margin-right: $ruler/2;
   }*/
   //单元格按钮
-  &.unit,&.circular {
+  &.unit,
+  &.circular {
     box-sizing: content-box;
     line-height: 0;
     display: inline-flex;

@@ -25,6 +25,7 @@
     </div>
     <grain-full-tab
       v-model="tabBarIndex"
+      :tags-scroll="true"
       :lazy-render="false"
       style="margin-top: 20px"
     >
@@ -65,7 +66,6 @@ export default {
   },
   data() {
     return {
-      activePanel: [false, false, true, false, true],
       tabBarIndex: 0,
       showContent: true,
       statusList: [
@@ -79,7 +79,6 @@ export default {
   mounted() {},
   methods: {
     test() {
-      this.activePanel.splice(0, 1, !this.activePanel[0]);
     }
   }
 };
