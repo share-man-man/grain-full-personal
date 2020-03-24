@@ -39,7 +39,7 @@ export default {
           path: "/smart-house-keeper/statistic"
         },
         {
-          iconName: "#icon-home",
+          iconName: "#icon-mine",
           name: "Me",
           path: "/smart-house-keeper/mine"
         }
