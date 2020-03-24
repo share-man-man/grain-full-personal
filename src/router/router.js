@@ -8,7 +8,7 @@ const routes = [
   /*自动进入某页*/
   {
     path: "*",
-    redirect: "/SmartHouseKeeper/home-page"
+    redirect: "/smart-house-keeper/home-page"
   },
   {
     path: "/test",
@@ -18,7 +18,7 @@ const routes = [
     }
   },
   {
-    path: "/SmartHouseKeeper",
+    path: "/smart-house-keeper",
     component: () => import("../views/apps/SmartHouseKeeper/App"),
     meta: {
       title: "智能家居"
@@ -35,6 +35,13 @@ const routes = [
               import("../views/apps/SmartHouseKeeper/HomePage/HomePage.vue"),
             meta: {
               title: "首页"
+            }
+          },
+          {
+            path: "statistic",
+            component: () => import("../views/test/test"),
+            meta: {
+              title: "统计"
             }
           }
         ]

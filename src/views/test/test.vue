@@ -11,7 +11,7 @@ export default {
     test() {}
   },
   mounted() {
-    console.log(1);
+    // console.log(1);
   }
 };
 </script>

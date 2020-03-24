@@ -6,11 +6,13 @@
     </div>
     <!--页脚-->
     <div class="foot">
-      <grain-full-tab-bar>
+      <grain-full-tab-bar v-model="tabBarIndex" @change="changeIndex">
         <grain-full-tab-bar-item
-                v-for="(item,index) in tabBarList"
-                :key="index"
-                :icon-name="item.iconName"/>
+          v-for="(item, index) in tabBarList"
+          :key="index"
+          :icon-name="item.iconName"
+          :name="item.name"
+        />
       </grain-full-tab-bar>
     </div>
   </div>
@@ -24,9 +26,51 @@ export default {
   components: { GrainFullTabBar, GrainFullTabBarItem },
   data() {
     return {
-      tabBarIndex: 0,
-      tabBarList: [{ iconName: "#icon-home"},{ iconName: "#icon-statistic"},{ iconName: "#icon-mine"}]
+      tabBarIndex: -1,
+      tabBarList: [
+        {
+          iconName: "#icon-home",
+          name: "Home",
+          path: "/smart-house-keeper/home-page"
+        },
+        {
+          iconName: "#icon-statistic",
+          name: "Data",
+          path: "/smart-house-keeper/statistic"
+        },
+        {
+          iconName: "#icon-home",
+          name: "Me",
+          path: "/smart-house-keeper/mine"
+        }
+      ]
     };
+  },
+  watch: {
+    $route(to) {
+      this.tabBarList.forEach((item, index) => {
+        if (item.path === to.path) {
+          this.tabBarIndex = index;
+        }
+      });
+    }
+  },
+  mounted() {
+    // console.log(this.$route)
+    this.tabBarList.forEach((item, index) => {
+      if (item.path === this.$route.path) {
+        this.tabBarIndex = index;
+      }
+    });
+  },
+  methods: {
+    changeIndex(index) {
+      if (this.$route.path !== this.tabBarList[index].path) {
+        this.$router.push({
+          path: this.tabBarList[index].path
+        });
+      }
+    }
   }
 };
 </script>
