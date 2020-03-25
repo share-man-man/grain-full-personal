@@ -13,7 +13,11 @@
         <!--防止右边margin无效-->
         <div><div style="height: 1px;width: 1px"></div></div>
       </div>
-      <div @click="showContent = !showContent" :class="tabSwitchClass">
+      <div
+        v-show="showTabSwitch"
+        @click="showContent = !showContent"
+        :class="tabSwitchClass"
+      >
         <grain-full-icon name="#icon-arrow-left" :style="tabSwitchIconStyle" />
       </div>
     </div>
@@ -45,6 +49,10 @@ export default {
     tagsScroll: {
       type: Boolean,
       default: false
+    },
+    showTabSwitch: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {

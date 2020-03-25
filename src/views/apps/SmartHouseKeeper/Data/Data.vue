@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="p">{{ $options.name }}</p>
-    <grain-full-tab v-model="weekIndex" :tags-scroll="true">
+    <grain-full-tab v-model="weekIndex" :tags-scroll="true" :show-tab-switch="false">
       <grain-full-tab-item
         v-for="(item, index) in weekDataList"
         :key="index"
