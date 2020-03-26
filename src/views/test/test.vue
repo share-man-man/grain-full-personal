@@ -1,20 +1,44 @@
 <template>
   <div>
-    <grain-full-circle></grain-full-circle>
+    <grain-full-circle
+      size="400px"
+      :percent="percent"
+      :dotted-line-divide-num="12"
+    ></grain-full-circle>
+    <grain-full-button @click="add">增加</grain-full-button>
+    <grain-full-button @click="reduce">减少</grain-full-button>
   </div>
 </template>
 <script>
 import GrainFullCircle from "../../components/GrainFull/Neumorphism/GrainFullCircle";
+import GrainFullButton from "../../components/GrainFull/Neumorphism/GrainFullButton";
 export default {
   name: "login",
   components: {
+    GrainFullButton,
     GrainFullCircle
   },
+  data() {
+    return {
+      percent: 32
+    };
+  },
   methods: {
-    test() {}
+    add() {
+      this.percent += 10;
+    },
+    reduce() {
+      this.percent -= 10;
+    }
   },
   mounted() {
-    // console.log(1);
+    // console.log(this.percent >= 50 ? 1 : 0);
+    // console.log(Math.sin(20/250)*250)
+    // console.log(Math.cos(20/250)*250)
+    // console.log(this.percent);
+    // console.log((2 * 3.14 * 450 * this.percent) / 450);
+    // console.log(Math.sin((2 * 314 * this.percent) / 10000) * 450);
+    // console.log(Math.cos((2 * 314 * this.percent) / 10000) * 450);
   }
 };
 </script>

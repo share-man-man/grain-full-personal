@@ -1,5 +1,5 @@
 <template>
-  <button :class="['default', type, click ? 'click' : '']" :style="comStyle">
+  <button :class="['default', type, click ? 'click' : '']" :style="comStyle" @click="$emit('click')">
     <!--    <i class="icon el-icon-delete" />-->
     <slot></slot>
   </button>
