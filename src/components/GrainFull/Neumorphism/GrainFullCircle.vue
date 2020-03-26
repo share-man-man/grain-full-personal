@@ -1,33 +1,88 @@
 <template>
   <div class="circle" :style="{ height: size, width: size }">
     <svg :viewBox="[0, 0, viewBoxSize, viewBoxSize]">
+      <defs>
+        <linearGradient
+          id="grain-full-circle-gradient-1"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0" stop-color="#e0e4ef" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+        <linearGradient
+          id="grain-full-circle-gradient-2"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+        >
+          <stop offset="0" stop-color="#ffffff" />
+          <stop offset="100%" stop-color="#e0e4ef" />
+        </linearGradient>
+        <linearGradient
+          id="grain-full-circle-gradient-3"
+          x1="100%"
+          y1="0%"
+          x2="0%"
+          y2="0%"
+        >
+          <stop offset="0" stop-color="#56F2B7" />
+          <stop offset="100%" stop-color="#54CE94" />
+        </linearGradient>
+        <linearGradient
+          id="grain-full-circle-gradient-4"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0" stop-color="#fdfdfd" />
+          <stop offset="100%" stop-color="#e8ebf2" />
+        </linearGradient>
+        <linearGradient
+          id="grain-full-circle-gradient-5"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+        >
+          <stop offset="0" stop-color="#e1e5ed" />
+          <stop offset="100%" stop-color="#fdfdfd" />
+        </linearGradient>
+      </defs>
       <!--1内圈半径200-->
       <path
-        d="M 600 600 m 0, -195 a 195, 195 0 1, 1 0, 390 a 195, 195 0 1, 1 0, -390"
-        class="van-circle__hover"
-        style="fill: #f4f5f9; stroke: #e7e8ed; stroke-width: 10px;"
+        d="M 600 600 m 0, -295 a 295, 295 0 1, 1 0, 590 a 295, 295 0 1, 1 0, -590"
+        style="fill: url(#grain-full-circle-gradient-1); stroke: url(#grain-full-circle-gradient-2); stroke-width: 10px;"
       ></path>
-      <!--2内圈半径250-->
+      <!--2内圈半径350-->
       <path
-        d="M 600 600 m 0, -250 a 250, 250 0 1, 1 0, 500 a 250, 250 0 1, 1 0, -500"
-        class="van-circle__hover"
-        style="fill: none; stroke: #f0f1f6; stroke-width: 100px;"
+        d="M 600 600 m 0, -350 a 350, 350 0 1, 1 0, 700 a 350, 350 0 1, 1 0, -700"
+        style="fill: none; stroke: url(#grain-full-circle-gradient-4); stroke-width: 100px;"
       ></path>
-      <!--3内圈半径250-->
+      <!--3内圈半径350-->
       <path
-        d="M 600 600 m 0, -250 a 250, 250 0 1, 1 0, 500 a 250, 250 0 1, 1 0, -500"
+        d="M 600 600 m 0, -350 a 350, 350 0 1, 1 0, 700 a 350, 350 0 1, 1 0, -700"
         class="circle-solid-line-progress"
         :style="solidLineProgressStyle"
       ></path>
-      <!--4内圈半径450-->
+      <!--4内圈半径425-->
       <path
-        d="M 600 600 m 0, -450 a 450, 450 0 1, 1 0, 900 a 450, 450 0 1, 1 0, -900"
+        d="M 600 600 m 0, -425 a 425, 425 0 1, 1 0, 850 a 425, 425 0 1, 1 0, -850"
+        style="fill: none; stroke: url(#grain-full-circle-gradient-5); stroke-width: 50px;filter:url(#f1)"
+      ></path>
+      <!--5内圈半径550-->
+      <path
+        d="M 600 600 m 0, -550 a 550, 550 0 1, 1 0, 1100 a 550, 550 0 1, 1 0, -1100"
         class="circle-dotted-line-back"
         :style="dottedLineBackStyle"
       ></path>
-      <!--5内圈半径450-->
+      <!--6内圈半径550-->
       <path
-        d="M 600 600 m 0, -450 a 450, 450 0 1, 1 0, 900 a 450, 450 0 1, 1 0, -900"
+        d="M 600 600 m 0, -550 a 550, 550 0 1, 1 0, 1100 a 550, 550 0 1, 1 0, -1100"
         class="circle-dotted-line-active"
         :style="dottedLineActiveStyle"
       ></path>
@@ -47,6 +102,9 @@
         ></div>
       </div>
     </div>
+    <div class="content" :style="contentStyle">
+      <slot>{{ finalPercent }}%</slot>
+    </div>
   </div>
 </template>
 
@@ -62,10 +120,7 @@ export default {
     //百分位数
     percent: {
       type: Number,
-      default: 25,
-      validator: function(value) {
-        return value >= 0 && value <= 100;
-      }
+      default: 25
     },
     //虚线等分数
     dottedLineDivideNum: {
@@ -76,8 +131,9 @@ export default {
   data() {
     return {
       viewBoxSize: 1200,
-      pointerCircularRadius: 250,
-      pointerCircularLineWidth: 100
+      pointerCircularRadius: 350,
+      pointerCircularLineWidth: 100,
+      contentRadius: 450
     };
   },
   computed: {
@@ -90,19 +146,20 @@ export default {
     },
     //虚线每份总长度
     dottedLineLength() {
-      return (2 * 3.14 * 450) / this.dottedLineDivideNum;
+      return (2 * 3.14 * 550) / this.dottedLineDivideNum;
     },
     //实线进度条样式
     solidLineProgressStyle() {
       return {
-        "stroke-dasharray": `${(1570 * this.finalPercent) / 100}px, 1570px`,
+        "stroke-dasharray": `${(2198 * this.finalPercent) / 100}px, 2198px`,
         "stroke-width": `${this.pointerCircularLineWidth}px`
       };
     },
     //虚线进度条背景样式
     dottedLineBackStyle() {
       return {
-        "stroke-dasharray": `0%, ${this.dottedLineLength}px`
+        "stroke-dasharray": `0%, ${this.dottedLineLength}px`,
+        // "stroke-width": `15px`
       };
     },
     //虚线进度条激活样式
@@ -116,7 +173,8 @@ export default {
       }
       str += ` ${this.dottedLineLength * this.dottedLineDivideNum}px`;
       return {
-        "stroke-dasharray": str
+        "stroke-dasharray": str,
+        // "stroke-width": `15px`
       };
     },
     //指针定位样式
@@ -148,6 +206,19 @@ export default {
       return {
         height: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`,
         width: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`
+      };
+    },
+    //内容框样式
+    contentStyle() {
+      return {
+        width: `${2 * this.contentRadius * this.magnification}px`,
+        height: `${2 * this.contentRadius * this.magnification}px`,
+        top: `${(this.viewBoxSize / 2 - this.contentRadius) *
+          this.magnification}px`,
+        left: `${(this.viewBoxSize / 2 - this.contentRadius) *
+          this.magnification}px`,
+        "font-size": `${150 * this.magnification}px`,
+        "box-shadow": `${62 * this.magnification}px ${62 * this.magnification}px ${62 * this.magnification}px #dee0e9`
       };
     }
   },
@@ -183,21 +254,22 @@ export default {
   &-solid-line-progress {
     fill: none;
     transition: all 0.5s;
-    stroke: $GrainFullMainColor;
+    //stroke: $GrainFullMainColor;
+    stroke: url(#grain-full-circle-gradient-3);
     stroke-linecap: round;
   }
   &-dotted-line {
     &-back {
       fill: none;
       stroke: #aaaaaa;
-      stroke-width: 15px;
+      stroke-width: 20px;
       stroke-linecap: round;
     }
     &-active {
       fill: none;
-      transition: all 0.5s;
+      /*transition: all 0.5s;*/
       stroke: $GrainFullMainColor;
-      stroke-width: 20px;
+      stroke-width: 30px;
       stroke-linecap: round;
     }
   }
@@ -206,8 +278,8 @@ export default {
     &-position {
       transition: all 0.5s;
       display: inline-block;
-      height: 100px;
-      width: 100px;
+      height: 1px;
+      width: 1px;
       position: absolute;
       &-offset {
         transition: all 0.5s;
@@ -220,11 +292,20 @@ export default {
           transition: all 0.5s;
           background-color: $GrainFullMainColor;
           border-radius: 100%;
-          height: 40px;
-          width: 40px;
         }
       }
     }
+  }
+  .content {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #9097a7;
+    font-weight: 500;
+    border-radius: 50%;
+    /*background-color: #a3e4ff;*/
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <grain-full-circle
-      size="400px"
+      size="2400px"
       :percent="percent"
       :dotted-line-divide-num="12"
     ></grain-full-circle>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      percent: 32
+      percent: 49
     };
   },
   methods: {
