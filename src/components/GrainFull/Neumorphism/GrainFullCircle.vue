@@ -62,7 +62,10 @@ export default {
     //百分位数
     percent: {
       type: Number,
-      default: 25
+      default: 25,
+      validator: function(value) {
+        return value >= 0 && value <= 100;
+      }
     },
     //虚线等分数
     dottedLineDivideNum: {
@@ -78,6 +81,9 @@ export default {
     };
   },
   computed: {
+    finalPercent() {
+      return this.percent < 0 ? 0 : this.percent > 100 ? 100 : this.percent;
+    },
     //放大倍数
     magnification() {
       return Number(this.size.replace("px", "")) / this.viewBoxSize;
@@ -89,7 +95,7 @@ export default {
     //实线进度条样式
     solidLineProgressStyle() {
       return {
-        "stroke-dasharray": `${(1570 * this.percent) / 100}px, 1570px`,
+        "stroke-dasharray": `${(1570 * this.finalPercent) / 100}px, 1570px`,
         "stroke-width": `${this.pointerCircularLineWidth}px`
       };
     },
@@ -101,7 +107,9 @@ export default {
     },
     //虚线进度条激活样式
     dottedLineActiveStyle() {
-      const num = Math.floor((this.dottedLineDivideNum * this.percent) / 100);
+      const num = Math.floor(
+        (this.dottedLineDivideNum * this.finalPercent) / 100
+      );
       let str = "0px ";
       for (let i = 0; i < num; i++) {
         str += ` ${this.dottedLineLength}px 0px`;
@@ -117,7 +125,7 @@ export default {
         top: `${(this.viewBoxSize / 2 - this.pointerCircularRadius) *
           this.magnification}px`,
         left: `${(this.viewBoxSize / 2) * this.magnification}px`,
-        transform: `rotate(${(this.percent * 360) / 100}deg)`,
+        transform: `rotate(${(this.finalPercent * 360) / 100}deg)`,
         "transform-origin": `0px ${this.pointerCircularRadius *
           this.magnification}px`
       };
@@ -138,9 +146,7 @@ export default {
     //指针圆心样式
     pointerCircularPositionOffsetCenter() {
       return {
-        height: `${this.pointerCircularLineWidth *
-          0.1 *
-          this.magnification}px`,
+        height: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`,
         width: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`
       };
     }
@@ -176,7 +182,7 @@ export default {
   /*}*/
   &-solid-line-progress {
     fill: none;
-    transition: all .5s;
+    transition: all 0.5s;
     stroke: $GrainFullMainColor;
     stroke-linecap: round;
   }
@@ -189,7 +195,7 @@ export default {
     }
     &-active {
       fill: none;
-      transition: all .5s;
+      transition: all 0.5s;
       stroke: $GrainFullMainColor;
       stroke-width: 20px;
       stroke-linecap: round;
@@ -198,20 +204,20 @@ export default {
   .pointer-circular {
     //定位的class
     &-position {
-      transition: all .6s;
+      transition: all 0.5s;
       display: inline-block;
       height: 100px;
       width: 100px;
       position: absolute;
       &-offset {
-        transition: all .6s;
+        transition: all 0.5s;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 100%;
         background-color: white;
         &-center {
-          transition: all .6s;
+          transition: all 0.5s;
           background-color: $GrainFullMainColor;
           border-radius: 100%;
           height: 40px;

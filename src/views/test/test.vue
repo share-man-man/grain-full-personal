@@ -25,10 +25,18 @@ export default {
   },
   methods: {
     add() {
-      this.percent += 10;
+      // if(this.percent >= 95){
+      //   this.percent = 100
+      // }else {
+        this.percent += 40;
+      // }
     },
     reduce() {
-      this.percent -= 10;
+      // if(this.percent <= 5){
+      //   this.percent = 0
+      // }else {
+        this.percent -= 30;
+      // }
     }
   },
   mounted() {
