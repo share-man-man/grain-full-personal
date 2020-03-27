@@ -1,6 +1,6 @@
 <template>
   <div class="usual">
-    <grain-full-switch
+    <switch-console
       v-for="(item, index) in switchList"
       :key="index"
       v-model="item.active"
@@ -12,17 +12,17 @@
 </template>
 
 <script>
-import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
+import SwitchConsole from "./SwitchConsole";
 export default {
   name: "Usual",
-  components: { GrainFullSwitch },
+  components: { SwitchConsole },
   data() {
     return {
       switchList: [
-        { active: false, iconName: "#icon-sound",name:"SoundBox" },
-        { active: false, iconName: "#icon-fridge",name:"Fridge" },
-        { active: false, iconName: "#icon-jiajudeng-",name:"PorchLight" },
-        { active: false, iconName: "#icon-jiajukongtiao-",name:"A/C" },
+        { active: false, iconName: "#icon-sound", name: "SoundBox" },
+        { active: true, iconName: "#icon-fridge", name: "Fridge" },
+        { active: false, iconName: "#icon-jiajudeng-", name: "PorchLight" },
+        { active: false, iconName: "#icon-jiajukongtiao-", name: "A/C" }
       ]
     };
   }

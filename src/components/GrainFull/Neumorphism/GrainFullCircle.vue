@@ -137,6 +137,7 @@ export default {
     };
   },
   computed: {
+    //参数数值边界限定
     finalPercent() {
       return this.percent < 0 ? 0 : this.percent > 100 ? 100 : this.percent;
     },

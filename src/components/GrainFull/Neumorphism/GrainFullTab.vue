@@ -149,6 +149,7 @@ export default {
     @include neumorphism-default;
     @include item-pbulic;
     margin: 10px 15px;
+    flex: 0 0 auto;
     &.active {
       @include neumorphism("concave", 30px, 6px, 5px, 0.12, 9px);
       color: $GrainFullMainColor;

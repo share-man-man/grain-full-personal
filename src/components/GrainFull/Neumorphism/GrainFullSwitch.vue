@@ -1,46 +1,47 @@
 <template>
-  <div class="switch">
-    <grain-full-icon :name="iconName" :size="50" />
-    <span class="p">
-      {{name}}
-    </span>
-    <div>
-      <div @click="$emit('input', !value)" :class="clickClass">
-        <div :class="nodeClass"></div>
-      </div>
+  <div @click="$emit('input', !value)" :class="clickClass">
+    <div v-if="!mode" :class="nodeClass"></div>
+    <div v-if="mode" class="switch-click__mode-group">
+      <p :class="['p', value ? 'active' : '']">Week</p>
+      <p :class="['p', !value ? 'active' : '']">&nbsp;Day&nbsp;</p>
     </div>
   </div>
 </template>
 
 <script>
-import GrainFullIcon from "./GrainFullIcon";
+// import GrainFullIcon from "./GrainFullIcon";
 export default {
   name: "GrainFullSwitch",
-  components: { GrainFullIcon },
+  components: {},
   props: {
     value: {
       type: Boolean,
       default: false
     },
-    iconName:{
-      type: String
-    },
-    name:{
-      type:String
+    mode: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     clickClass() {
-      return {
+      let objClass = {
         "switch-click": true,
         on: this.value
       };
-    },
-    nodeClass(){
-      return {
-        "switch-click-node":true,
-        "on":this.value
+      if (this.mode) {
+        objClass = {
+          "switch-click__mode": true,
+          on: this.value
+        };
       }
+      return objClass;
+    },
+    nodeClass() {
+      return {
+        "switch-click-node": true,
+        on: this.value
+      };
     }
   }
 };
@@ -48,16 +49,8 @@ export default {
 
 <style scoped lang="scss">
 .switch {
-  @include neumorphism("flat", 80px, 21px, 7px, 0.05, 10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px 10px 0px 10px;
-  padding: 15px;
-  width: 80px;
   &-click {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     margin-top: 16px;
     width: 60px;
     height: 30px;
@@ -66,20 +59,37 @@ export default {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    &-node{
-      top: 0;
-      left: 0;
+    display: inline-block;
+    position: relative;
+    /*align-items: center;*/
+    &__mode {
+      //@include neumorphism-default;
+      @include neumorphism("concave", 80px, 10px, 5px, 0.13, 8px);
+      display: inline-block;
+      transition: all 0.3s ease;
+      margin: 8px;
+      /*width: 80px;*/
+      /*height: 30px;*/
+      &-group {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 600;
+      }
+    }
+    &-node {
+      position: absolute;
+      top: 1.5px;
+      left: 1.5px;
       z-index: 1;
       width: 3px;
       height: 3px;
       border: 12px solid $GrainFullSwitchClickNodeBackGroundColor;
       //background-color: $GrainFullSwitchClickNodeBackGroundColor;
-      border-radius: 100%;
-      transition: all .3s ease;
-      &.on{
-        transform: translateX(32px);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      &.on {
+        transform: translateX(30px);
       }
     }
     &.on {
@@ -89,9 +99,20 @@ export default {
 }
 .p {
   @include neumorphism-default;
-  display: block;
-  font-size: 14px;
+  background-color: transparent;
+  /*display: block;*/
+  font-size: 12px;
   font-weight: 500;
-  margin-top: 5px;
+  margin: 4px 4px;
+  padding: 4px 9px;
+  border-radius: 9px;
+  &.active {
+    //@include neumorphism("pressed", 21px, 7px, 2px, 0.08, 6px);
+    //background: linear-gradient($GrainFullAngle, #e7ebf1, #f3f2f7);
+    background-color: #e6ebf1;
+    color: $GrainFullMainColor;
+    box-shadow: inset 2px 2px 1px #d3d6e1,inset -2px -2px 2px #e5e7e9;
+    /*padding: 2px 5px;*/
+  }
 }
 </style>
