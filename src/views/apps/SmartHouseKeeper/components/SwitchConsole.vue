@@ -5,10 +5,9 @@
       {{ name }}
     </span>
     <div>
-      <!--      <div @click="$emit('input', !value)" :class="clickClass">-->
-      <!--        <div :class="nodeClass"></div>-->
-      <!--      </div>-->
-      <grain-full-switch v-model="switchModel" />
+      <slot name="item3">
+        <grain-full-switch v-model="switchModel" />
+      </slot>
     </div>
   </div>
 </template>
@@ -76,7 +75,8 @@ export default {
   justify-content: space-around;
   margin: 10px 10px 0px 10px;
   padding: 15px;
-  width: 80px;
+  min-width: 80px;
+  /*width: 80px;*/
   /*&-click {
     transition: all 0.3s ease;
     margin-top: 16px;

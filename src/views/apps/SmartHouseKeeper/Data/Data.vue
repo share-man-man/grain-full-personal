@@ -12,13 +12,6 @@
         :name="item.name"
       />
     </grain-full-tab>
-    <!--    <grain-full-circle-->
-    <!--      style="margin: 0 auto;display: block"-->
-    <!--      size="200px"-->
-    <!--      :percent="temperature"-->
-    <!--      :dotted-line-divide-num="12"-->
-    <!--    >-->
-    <!--    </grain-full-circle>-->
     <div>
       <div class="consumption">
         <div class="consumption__inner">
@@ -31,39 +24,46 @@
         </div>
       </div>
     </div>
-    <div
-      style="display: flex;justify-content: space-around;align-items: center"
-    >
-      <p class="p" style="margin: 0">Particulars</p>
+    <div style="display: flex;justify-content: center;align-items: center">
+      <div class="p" style="margin: 0">{{ particulars }}</div>
       <grain-full-switch
         v-model="dayOrWeek"
         :mode="true"
         style="margin-left: 10px"
       />
     </div>
-    <!--    <div>-->
     <div class="month-data">
       <div
         v-for="(item, index) in monthDataList[monthIndex].data"
         :key="index"
-        :style="{
-          height: item * 2 + 'px',
-          'text-align': 'center',
-          'line-height': item * 2 + 'px'
-        }"
-        :class="['month-data-item', index === 3 ? 'active' : '']"
+        :class="['month-data-item']"
       >
-        {{ item }}
+        <div class="p" style="font-weight: 500;font-size: 12px">{{ item }}</div>
+        <div
+          :style="{ height: (item / maxDaily) * 100 + 'px' }"
+          :class="[
+            'month-data-item-columnar',
+            dailyIndex === index ? 'active' : ''
+          ]"
+        ></div>
+        <div class="p" style="font-weight: 500;font-size: 12px">
+          {{ index + 1 }}th
+        </div>
       </div>
     </div>
-    <!--    <div class="test1">-->
-    <!--      <div-->
-    <!--              v-for="(item, index) in monthDataList[monthIndex].data"-->
-    <!--              :key="index*30"-->
-    <!--              :style="{ height: item + 'px' }"-->
-    <!--              class="test2"-->
-    <!--      ></div>-->
-    <!--    </div>-->
+    <div class="ep-power">
+      <switch-console
+        v-for="(item, index) in epList"
+        :key="index"
+        :icon-name="item.iconName"
+        :name="item.name"
+        style="margin: 20px 20px 20px 20px"
+      >
+        <template v-slot:item3>
+          <p class="p">{{item.data}}</p>
+        </template>
+      </switch-console>
+    </div>
   </div>
 </template>
 
@@ -71,19 +71,23 @@
 import GrainFullTab from "../../../../components/GrainFull/Neumorphism/GrainFullTab";
 import GrainFullTabItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabItem";
 import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
-// import GrainFullCircle from "../../../../components/GrainFull/Neumorphism/GrainFullCircle";
+import SwitchConsole from "../components/SwitchConsole";
 
 export default {
   name: "Data",
   components: {
     GrainFullSwitch,
     GrainFullTabItem,
-    GrainFullTab
+    GrainFullTab,
+    SwitchConsole
     // GrainFullCircle
   },
   data() {
     return {
+      //当前月份下标
       monthIndex: 0,
+      //当前日期下标
+      dailyIndex: 2,
       monthDataList: [
         {
           name: "Jan.",
@@ -102,8 +106,22 @@ export default {
         { name: "Dec.", data: [] }
       ],
       temperature: 494,
-      dayOrWeek: false
+      dayOrWeek: false,
+      particulars: "Particulars   :",
+      epList: [
+        { active: false, iconName: "#icon-sound", name: "SoundBox",data:'41%' },
+        { active: true, iconName: "#icon-fridge", name: "Fridge",data:'23%' },
+        { active: false, iconName: "#icon-jiajudeng-", name: "PorchLight",data:'11%' },
+        { active: false, iconName: "#icon-jiajukongtiao-", name: "A/C",data:'40%' }
+      ]
     };
+  },
+  computed: {
+    maxDaily() {
+      return this.monthDataList[this.monthIndex].data.reduce((a, b) => {
+        return a > b ? a : b;
+      });
+    }
   }
 };
 </script>
@@ -114,6 +132,7 @@ export default {
   font-size: 18px;
   font-weight: 600;
   margin: 10px auto;
+  white-space: pre;
 }
 .consumption {
   margin: 0px auto;
@@ -145,17 +164,38 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  overflow-x: scroll;
+  overflow-x: auto;
+  min-height: 170px;
   &-item {
-    @include neumorphism("flat", 30px, 7px, 3px, 0.12, 9px);
+    //@include neumorphism("flat", 30px, 7px, 3px, 0.12, 9px);
     flex: 0 0 auto;
-    width: 25px;
+    //width: 25px;
     margin: 10px 10px;
-    background-image: linear-gradient(#e8e9ee, #f3f4f8);
-    &.active {
-      background-image: inherit;
-      background-color: #42b983;
+    //background-image: linear-gradient(#e8e9ee, #f3f4f8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 150px;
+    &-columnar {
+      @include neumorphism("flat", 30px, 7px, 3px, 0.12, 9px);
+      width: 25px;
+      background-image: linear-gradient(#e8e9ee, #f3f4f8);
+      &.active {
+        /*background-image: inherit;*/
+        /*background-color: #42b983;*/
+        background-image: linear-gradient(#40bc89, #53d9a3);
+      }
     }
+  }
+}
+.ep-power {
+  overflow-x: auto;
+  display: flex;
+  .p{
+    font-size: 20px;
+    color: $GrainFullMainColor;
+    font-weight: 500;
   }
 }
 </style>
