@@ -40,7 +40,7 @@ export default {
         },
         {
           iconName: "#icon-mine",
-          name: "Me",
+          name: "Mine",
           path: "/smart-house-keeper/mine"
         }
       ]
