@@ -12,13 +12,15 @@
       <grain-full-panel
         v-for="(item, index) in statusList"
         :key="index"
-        :active="item.active"
-        @click.native="item.active = !item.active"
+        :active="statusActiveIndex === index"
+        @click.native="statusActiveIndex = index"
         icon="#icon-guizi-"
         style="margin: 15px 0 15px 30px"
       >
         <grain-full-icon :name="item.icon" />
-        <p style="margin:0 0 0 5px;font-size: 13px;font-weight: 500">{{ item.name }}</p>
+        <p style="margin:0 0 0 5px;font-size: 13px;font-weight: 500">
+          {{ item.name }}
+        </p>
       </grain-full-panel>
       <!--防止右边margin无效-->
       <div><div style="height: 1px;width: 10px"></div></div>
@@ -68,6 +70,7 @@ export default {
     return {
       tabBarIndex: 0,
       showContent: true,
+      statusActiveIndex: 0,
       statusList: [
         { name: "At Home", active: false, icon: "#icon-home" },
         { name: "Going Out", active: false, icon: "#icon-go-out" },
@@ -78,8 +81,7 @@ export default {
   },
   mounted() {},
   methods: {
-    test() {
-    }
+    test() {}
   }
 };
 </script>

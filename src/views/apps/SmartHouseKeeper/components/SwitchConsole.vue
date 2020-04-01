@@ -9,6 +9,9 @@
         <grain-full-switch v-model="switchModel" />
       </slot>
     </div>
+    <slot name="info">
+<!--      <div style="height: 20px;width: 20px;background-color: #42b983">asd</div>-->
+    </slot>
   </div>
 </template>
 
@@ -76,6 +79,7 @@ export default {
   margin: 10px 10px 0px 10px;
   padding: 15px;
   min-width: 80px;
+  position: relative;
   /*width: 80px;*/
   /*&-click {
     transition: all 0.3s ease;

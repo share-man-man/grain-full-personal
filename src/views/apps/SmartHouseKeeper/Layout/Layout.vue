@@ -87,5 +87,6 @@ export default {
 }
 .foot {
   height: 75px;
+  margin-top: 10px;
 }
 </style>

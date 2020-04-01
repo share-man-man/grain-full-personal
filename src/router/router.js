@@ -39,9 +39,18 @@ const routes = [
           },
           {
             path: "statistic",
-            component: () => import("../views/apps/SmartHouseKeeper/Data/Data.vue"),
+            component: () =>
+              import("../views/apps/SmartHouseKeeper/Data/Data.vue"),
             meta: {
               title: "统计"
+            }
+          },
+          {
+            path: "mine",
+            component: () =>
+              import("../views/apps/SmartHouseKeeper/Mine/Mine.vue"),
+            meta: {
+              title: "个人中心"
             }
           }
         ]

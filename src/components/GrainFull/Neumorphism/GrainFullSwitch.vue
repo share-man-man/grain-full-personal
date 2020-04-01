@@ -1,5 +1,5 @@
 <template>
-  <div @click="$emit('input', !value)" :class="clickClass">
+  <div @click="click" :class="clickClass">
     <div v-if="!mode" :class="nodeClass"></div>
     <div v-if="mode" class="switch-click__mode-group">
       <p :class="['p', value ? 'active' : '']">Week</p>
@@ -43,6 +43,11 @@ export default {
         on: this.value
       };
     }
+  },
+  methods: {
+    click() {
+      this.$emit("input", !this.value);
+    }
   }
 };
 </script>
@@ -61,6 +66,7 @@ export default {
     cursor: pointer;
     display: inline-block;
     position: relative;
+    -webkit-tap-highlight-color:transparent;
     /*align-items: center;*/
     &__mode {
       //@include neumorphism-default;
@@ -68,6 +74,7 @@ export default {
       display: inline-block;
       transition: all 0.3s ease;
       margin: 8px;
+      -webkit-tap-highlight-color:transparent;
       /*width: 80px;*/
       /*height: 30px;*/
       &-group {
@@ -111,7 +118,7 @@ export default {
     //background: linear-gradient($GrainFullAngle, #e7ebf1, #f3f2f7);
     background-color: #e6ebf1;
     color: $GrainFullMainColor;
-    box-shadow: inset 2px 2px 1px #d3d6e1,inset -2px -2px 2px #e5e7e9;
+    box-shadow: inset 2px 2px 1px #d3d6e1, inset -2px -2px 2px #e5e7e9;
     /*padding: 2px 5px;*/
   }
 }
