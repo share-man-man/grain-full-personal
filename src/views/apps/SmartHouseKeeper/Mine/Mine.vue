@@ -85,11 +85,11 @@ export default {
 }
 .panel {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 20px;
   &-item {
-    margin-left: 35px;
+    /*margin-left: 35px;*/
     margin-top: 40px;
     padding: 25px;
     &-info {
