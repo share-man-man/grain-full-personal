@@ -1,12 +1,22 @@
 <template>
-  <div style="white-space: pre">
-    a &nbsp;&nbsp;  sdasda
+  <div>
+    <grain-full-circle
+      size="600px"
+      :percent="percent"
+      :dotted-line-divide-num="12"
+    ></grain-full-circle>
+    <grain-full-button @click="add">增加</grain-full-button>
+    <grain-full-button @click="reduce">减少</grain-full-button>
   </div>
 </template>
 <script>
+import GrainFullCircle from "../../components/GrainFull/Neumorphism/GrainFullCircle";
+import GrainFullButton from "../../components/GrainFull/Neumorphism/GrainFullButton";
 export default {
   name: "login",
   components: {
+    GrainFullButton,
+    GrainFullCircle
   },
   data() {
     return {
