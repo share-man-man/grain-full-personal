@@ -54,6 +54,16 @@ const routes = [
             }
           }
         ]
+      },
+      {
+        path: "air-condition",
+        component: () =>
+          import(
+            "../views/apps/SmartHouseKeeper/Manipulation/AirCondition.vue"
+          ),
+        meta: {
+          title: "空调操控"
+        }
       }
     ]
   }

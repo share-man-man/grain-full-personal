@@ -7,6 +7,7 @@
       :icon-name="item.iconName"
       :name="item.name"
       style="margin: 20px 20px 20px 20px"
+      @click.native="toPath(item.path)"
     />
   </div>
 </template>
@@ -22,9 +23,23 @@ export default {
         { active: false, iconName: "#icon-sound", name: "SoundBox" },
         { active: true, iconName: "#icon-fridge", name: "Fridge" },
         { active: false, iconName: "#icon-jiajudeng-", name: "PorchLight" },
-        { active: false, iconName: "#icon-jiajukongtiao-", name: "A/C" }
+        {
+          active: false,
+          iconName: "#icon-jiajukongtiao-",
+          name: "A/C",
+          path: "air-condition"
+        }
       ]
     };
+  },
+  methods: {
+    toPath(path) {
+      if(path){
+        this.$router.push({
+          path: path
+        });
+      }
+    }
   }
 };
 </script>

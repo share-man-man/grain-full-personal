@@ -1,5 +1,5 @@
 <template>
-  <div @click="click" :class="clickClass">
+  <div @click.stop="click" :class="clickClass">
     <div v-if="!mode" :class="nodeClass"></div>
     <div v-if="mode" class="switch-click__mode-group">
       <p :class="['p', value ? 'active' : '']">Week</p>
