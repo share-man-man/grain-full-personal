@@ -1,7 +1,7 @@
 <template>
   <div>
     <grain-full-circle
-      size="600px"
+      size="300px"
       :percent="percent"
       :dotted-line-divide-num="12"
     ></grain-full-circle>

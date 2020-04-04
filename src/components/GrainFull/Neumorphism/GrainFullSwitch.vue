@@ -2,8 +2,16 @@
   <div @click.stop="click" :class="clickClass">
     <div v-if="!mode" :class="nodeClass"></div>
     <div v-if="mode" class="switch-click__mode-group">
-      <p :class="['p', value ? 'active' : '']">Week</p>
-      <p :class="['p', !value ? 'active' : '']">&nbsp;Day&nbsp;</p>
+      <p :class="['p', value ? 'active' : '']">
+        <slot name="left">
+          Week
+        </slot>
+      </p>
+      <p :class="['p', !value ? 'active' : '']">
+        <slot name="right">
+          Day
+        </slot>
+      </p>
     </div>
   </div>
 </template>
@@ -66,7 +74,7 @@ export default {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
     /*align-items: center;*/
     &__mode {
       //@include neumorphism-default;
@@ -74,7 +82,7 @@ export default {
       display: inline-block;
       transition: all 0.3s ease;
       margin: 8px;
-      -webkit-tap-highlight-color:transparent;
+      -webkit-tap-highlight-color: transparent;
       /*width: 80px;*/
       /*height: 30px;*/
       &-group {

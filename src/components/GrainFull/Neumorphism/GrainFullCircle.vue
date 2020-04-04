@@ -22,15 +22,25 @@
           <stop offset="0" stop-color="#ffffff" />
           <stop offset="100%" stop-color="#e0e4ef" />
         </linearGradient>
+        <!--        <linearGradient-->
+        <!--          id="grain-full-circle-gradient-3"-->
+        <!--          x1="100%"-->
+        <!--          y1="0%"-->
+        <!--          x2="0%"-->
+        <!--          y2="0%"-->
+        <!--        >-->
+        <!--          <stop offset="0" stop-color="#56F2B7" />-->
+        <!--          <stop offset="100%" stop-color="#54CE94" />-->
+        <!--        </linearGradient>-->
         <linearGradient
-          id="grain-full-circle-gradient-3"
+          :id="activeDarkColor + activeLightColor"
           x1="100%"
           y1="0%"
           x2="0%"
           y2="0%"
         >
-          <stop offset="0" stop-color="#56F2B7" />
-          <stop offset="100%" stop-color="#54CE94" />
+          <stop offset="0" :stop-color="activeDarkColor" />
+          <stop offset="100%" :stop-color="activeLightColor" />
         </linearGradient>
         <linearGradient
           id="grain-full-circle-gradient-4"
@@ -119,13 +129,24 @@ export default {
     },
     //百分位数
     percent: {
-      type: Number,
+      type: [Number, String],
       default: 25
     },
     //虚线等分数
     dottedLineDivideNum: {
-      type: Number,
+      type: [Number, String],
       default: 12
+    },
+    activeColor: {
+      type: String
+    },
+    activeLightColor: {
+      type: String,
+      default: "#56F2B7"
+    },
+    activeDarkColor: {
+      type: String,
+      default: "#54CE94"
     }
   },
   data() {
@@ -153,13 +174,14 @@ export default {
     solidLineProgressStyle() {
       return {
         "stroke-dasharray": `${(2198 * this.finalPercent) / 100}px, 2198px`,
-        "stroke-width": `${this.pointerCircularLineWidth}px`
+        "stroke-width": `${this.pointerCircularLineWidth}px`,
+        stroke: `url(#${this.activeDarkColor + this.activeLightColor})`
       };
     },
     //虚线进度条背景样式
     dottedLineBackStyle() {
       return {
-        "stroke-dasharray": `0%, ${this.dottedLineLength}px`,
+        "stroke-dasharray": `0%, ${this.dottedLineLength}px`
         // "stroke-width": `15px`
       };
     },
@@ -175,7 +197,7 @@ export default {
       str += ` ${this.dottedLineLength * this.dottedLineDivideNum}px`;
       return {
         "stroke-dasharray": str,
-        // "stroke-width": `15px`
+        stroke: this.activeColor || ""
       };
     },
     //指针定位样式
@@ -206,7 +228,8 @@ export default {
     pointerCircularPositionOffsetCenter() {
       return {
         height: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`,
-        width: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`
+        width: `${this.pointerCircularLineWidth * 0.1 * this.magnification}px`,
+        "background-color": this.activeColor || ""
       };
     },
     //内容框样式
@@ -219,7 +242,8 @@ export default {
         left: `${(this.viewBoxSize / 2 - this.contentRadius) *
           this.magnification}px`,
         "font-size": `${150 * this.magnification}px`,
-        "box-shadow": `${62 * this.magnification}px ${62 * this.magnification}px ${62 * this.magnification}px #dee0e9`
+        "box-shadow": `${62 * this.magnification}px ${62 *
+          this.magnification}px ${62 * this.magnification}px #dee0e9`
       };
     }
   },
@@ -255,8 +279,7 @@ export default {
   &-solid-line-progress {
     fill: none;
     transition: all 0.5s;
-    //stroke: $GrainFullMainColor;
-    stroke: url(#grain-full-circle-gradient-3);
+    /*stroke: url(#grain-full-circle-gradient-3);*/
     stroke-linecap: round;
   }
   &-dotted-line {
