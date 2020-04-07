@@ -15,12 +15,35 @@
         </div>
         <grain-full-switch v-model="patternFlag" mode>
           <template v-slot:left>
-            OFF
+            <grain-full-icon
+              :class="[patternFlag ? 'active' : '']"
+              name="#icon-sleep"
+            />
           </template>
           <template v-slot:right>
-            ON
+            <grain-full-icon
+              :class="[!patternFlag ? 'active' : '']"
+              name="#icon-sun"
+            />
           </template>
         </grain-full-switch>
+      </div>
+      <div
+        style="display: flex;justify-content: center;align-items: center;flex-direction: column"
+      >
+        <div class="light-radius">
+          <div class="light-radius-inner"></div>
+        </div>
+        <grain-full-button
+          :click="star"
+          @click="star = !star"
+          type="unit"
+          width="40px"
+          height="40px"
+          style="margin-top: 30px"
+        >
+          <grain-full-icon name="#icon-star" :class="star ? 'active' : ''"/>
+        </grain-full-button>
       </div>
     </div>
     <div></div>
@@ -30,14 +53,16 @@
 <script>
 import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFullIcon";
 import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
+import GrainFullButton from "../../../../components/GrainFull/Neumorphism/GrainFullButton";
 export default {
   name: "LightingControl",
-  components: {GrainFullSwitch, GrainFullIcon },
-    data(){
-      return {
-          patternFlag:true
-      }
-    },
+  components: { GrainFullSwitch, GrainFullIcon, GrainFullButton },
+  data() {
+    return {
+      patternFlag: true,
+      star: false
+    };
+  },
   methods: {
     back() {
       this.$router.back();
@@ -70,5 +95,36 @@ export default {
   font-weight: 500;
   margin: 10px auto;
   white-space: pre;
+}
+.icon-flag {
+  &-p {
+    @include neumorphism-default;
+    font-size: 16px;
+    font-weight: 600;
+    /*margin: 10px auto;*/
+    white-space: pre;
+  }
+}
+.active {
+  color: $GrainFullMainColor;
+}
+.light {
+  &-radius {
+    @include neumorphism("concave", 200px, 100px, 9px, 0.11, 11px);
+    height: 200px;
+    width: 200px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-inner {
+      //@include neumorphism("convex", 180px, 100px, 5px, 0.03, 18px);
+      height: 180px;
+      width: 180px;
+      box-shadow: -3px -3px 5px #ffffff, 5px 5px 5px #e4f8ff;
+      border-radius: 50%;
+      background: #d9f4ff;
+    }
+  }
 }
 </style>
