@@ -189,9 +189,6 @@ export default {
     text-align: center;
     border: 1px solid #f1f1f1;
   }
-  &-title {
-    flex: 1;
-  }
 }
 .p {
   @include neumorphism-default;

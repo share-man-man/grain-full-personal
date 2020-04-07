@@ -64,6 +64,16 @@ const routes = [
         meta: {
           title: "空调操控"
         }
+      },
+      {
+        path: "lighting-control",
+        component: () =>
+            import(
+                "../views/apps/SmartHouseKeeper/LightingControl/LightingControl.vue"
+                ),
+        meta: {
+          title: "灯光控制"
+        }
       }
     ]
   }

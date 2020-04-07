@@ -22,7 +22,12 @@ export default {
       switchList: [
         { active: false, iconName: "#icon-sound", name: "SoundBox" },
         { active: true, iconName: "#icon-fridge", name: "Fridge" },
-        { active: false, iconName: "#icon-jiajudeng-", name: "PorchLight" },
+        {
+          active: false,
+          iconName: "#icon-jiajudeng-",
+          name: "PorchLight",
+          path: "lighting-control"
+        },
         {
           active: false,
           iconName: "#icon-jiajukongtiao-",
@@ -34,7 +39,7 @@ export default {
   },
   methods: {
     toPath(path) {
-      if(path){
+      if (path) {
         this.$router.push({
           path: path
         });
