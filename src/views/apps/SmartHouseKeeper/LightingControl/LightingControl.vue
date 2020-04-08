@@ -42,9 +42,12 @@
           height="40px"
           style="margin-top: 30px"
         >
-          <grain-full-icon name="#icon-star" :class="star ? 'active' : ''"/>
+          <grain-full-icon name="#icon-star" :class="star ? 'active' : ''" />
         </grain-full-button>
       </div>
+      <p class="p" style="text-align: left;margin-left: 40px;font-size: 14px">
+        BrightLess
+      </p>
     </div>
     <div></div>
   </div>
