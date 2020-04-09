@@ -1,31 +1,43 @@
 <template>
-  <!--  <grain-full-slider />-->
-  <div style="height: 40px;background-color: #333333">
-    <div
-      class="test"
-      :style="{ left: x + 'px', top: y + 'px' }"
-      ref="box"
-      @mousedown.prevent="mouseDown"
-      @touchstart.prevent="mouseDown"
-    >
-      <div style="height: 10px;width: 10px;background-color: #1989fa"></div>
+  <div>
+    <div>
+      <van-slider v-model="percent1" :min="-10" :max="40" />
+    </div>
+    <div style="margin-top: 200px">
+      <grain-full-slider v-model="percent2" />
     </div>
   </div>
+  <!--  <div style="height: 40px;background-color: #333333">-->
+  <!--    <div-->
+  <!--      class="test"-->
+  <!--      :style="{ left: x + 'px', top: y + 'px' }"-->
+  <!--      ref="box"-->
+  <!--      @mousedown.prevent="mouseDown"-->
+  <!--      @touchstart.prevent="mouseDown"-->
+  <!--    >-->
+  <!--      <div style="height: 10px;width: 10px;background-color: #1989fa"></div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </template>
 <script>
 // import GrainFullCircle from "../../components/GrainFull/Neumorphism/GrainFullCircle";
 // import GrainFullButton from "../../components/GrainFull/Neumorphism/GrainFullButton";
-// import GrainFullSlider from "../../components/GrainFull/Neumorphism/GrainFullSlider";
+import GrainFullSlider from "../../components/GrainFull/Neumorphism/GrainFullSlider";
+
+import { Slider, Toast } from "vant";
+
 export default {
   name: "login",
   components: {
-    // GrainFullSlider
+    [Slider.name]: Slider,
+    GrainFullSlider
     // GrainFullButton,
     // GrainFullCircle
   },
   data() {
     return {
-      percent: 49,
+      percent1: 32,
+      percent2: 12,
       x: 0,
       y: 0,
       click: false
@@ -49,6 +61,9 @@ export default {
       this.percent -= 30;
       // }
     },
+    onChange(value) {
+      Toast("当前值：" + value);
+    },
     mouseDown() {
       this.click = true;
       document.addEventListener("mousemove", this.fnMove);
@@ -59,7 +74,7 @@ export default {
     fnMove(e) {
       // console.log(e)
       if (this.click) {
-        let xTem = (e.clientX+1) || e.changedTouches[0].clientX;
+        let xTem = e.clientX + 1 || e.changedTouches[0].clientX;
         this.x = xTem - 10;
       }
     },
