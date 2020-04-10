@@ -1,23 +1,13 @@
 <template>
   <div>
-    <div>
+    <div style="margin-top: 20px">
+      <grain-full-slider v-model="percent2" :max="40" :min="-10" />
+    </div>
+    <div style="margin-top: 20px">
       <van-slider v-model="percent1" :min="-10" :max="40" />
     </div>
-    <div style="margin-top: 200px">
-      <grain-full-slider v-model="percent2" />
-    </div>
+    <button @click="test" style="margin-top: 20px">asdasdas</button>
   </div>
-  <!--  <div style="height: 40px;background-color: #333333">-->
-  <!--    <div-->
-  <!--      class="test"-->
-  <!--      :style="{ left: x + 'px', top: y + 'px' }"-->
-  <!--      ref="box"-->
-  <!--      @mousedown.prevent="mouseDown"-->
-  <!--      @touchstart.prevent="mouseDown"-->
-  <!--    >-->
-  <!--      <div style="height: 10px;width: 10px;background-color: #1989fa"></div>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </template>
 <script>
 // import GrainFullCircle from "../../components/GrainFull/Neumorphism/GrainFullCircle";
@@ -36,7 +26,7 @@ export default {
   },
   data() {
     return {
-      percent1: 32,
+      percent1: 10,
       percent2: 12,
       x: 0,
       y: 0,
@@ -47,19 +37,9 @@ export default {
   //   console.log(this.$refs.box);
   // },
   methods: {
-    add() {
-      // if(this.percent >= 95){
-      //   this.percent = 100
-      // }else {
-      this.percent += 40;
-      // }
-    },
-    reduce() {
-      // if(this.percent <= 5){
-      //   this.percent = 0
-      // }else {
-      this.percent -= 30;
-      // }
+    test() {
+      this.percent1++;
+      this.percent2++;
     },
     onChange(value) {
       Toast("当前值：" + value);

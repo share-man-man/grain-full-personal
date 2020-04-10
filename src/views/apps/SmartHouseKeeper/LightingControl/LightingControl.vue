@@ -32,7 +32,10 @@
         style="display: flex;justify-content: center;align-items: center;flex-direction: column"
       >
         <div class="light-radius">
-          <div class="light-radius-inner"></div>
+          <div
+            :style="{ background: lightColor }"
+            class="light-radius-inner"
+          ></div>
         </div>
         <grain-full-button
           :click="star"
@@ -48,8 +51,78 @@
       <p class="p" style="text-align: left;margin-left: 40px;font-size: 14px">
         BrightLess
       </p>
+      <div class="slide-contain">
+        <grain-full-button
+          @click="brightLess -= 10"
+          type="circular"
+          width="30px"
+          height="30px"
+        >
+          <grain-full-icon name="#icon-add" />
+        </grain-full-button>
+        <div style="width: 70%;margin: 0 10px">
+          <grain-full-slider v-model="brightLess" />
+        </div>
+        <grain-full-button
+          @click="brightLess += 10"
+          type="circular"
+          width="30px"
+          height="30px"
+        >
+          <grain-full-icon name="#icon-reduce" />
+        </grain-full-button>
+      </div>
+      <p class="p" style="text-align: left;margin-left: 40px;font-size: 14px">
+        Color Temperature
+      </p>
+      <div class="slide-contain">
+        <grain-full-button
+          @click="colorTemperature -= 10"
+          type="circular"
+          width="30px"
+          height="30px"
+        >
+          <grain-full-icon name="#icon-add" />
+        </grain-full-button>
+        <div style="width: 70%;margin: 0 10px">
+          <grain-full-slider
+            v-model="colorTemperature"
+            :slider-style="{
+              'background-image':
+                'linear-gradient(to right, #72d5fa, #ffffff, #face60)'
+            }"
+            :progress-style="{
+              'background-color': 'transparent'
+            }"
+          />
+        </div>
+        <grain-full-button
+          @click="colorTemperature += 10"
+          type="circular"
+          width="30px"
+          height="30px"
+        >
+          <grain-full-icon name="#icon-reduce" />
+        </grain-full-button>
+      </div>
     </div>
-    <div></div>
+    <div class="scroll-panel" style="padding-bottom: 10px">
+      <grain-full-panel
+        v-for="(item, index) in statusList"
+        :key="index"
+        :active="statusActiveIndex === index"
+        @click.native="clickTab(index)"
+        icon="#icon-guizi-"
+        style="margin: 15px 0 15px 30px;padding: 10px"
+      >
+        <grain-full-icon :name="item.icon" />
+        <p style="margin:0 0 0 5px;font-size: 13px;font-weight: 500">
+          {{ item.name }}
+        </p>
+      </grain-full-panel>
+      <!--防止右边margin无效-->
+      <div><div style="height: 1px;width: 10px"></div></div>
+    </div>
   </div>
 </template>
 
@@ -57,18 +130,62 @@
 import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFullIcon";
 import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
 import GrainFullButton from "../../../../components/GrainFull/Neumorphism/GrainFullButton";
+import GrainFullSlider from "../../../../components/GrainFull/Neumorphism/GrainFullSlider";
+import GrainFullPanel from "../../../../components/GrainFull/Neumorphism/GrainFullPanel";
 export default {
   name: "LightingControl",
-  components: { GrainFullSwitch, GrainFullIcon, GrainFullButton },
+  components: {
+    GrainFullSlider,
+    GrainFullSwitch,
+    GrainFullIcon,
+    GrainFullButton,
+    GrainFullPanel
+  },
   data() {
     return {
       patternFlag: true,
-      star: false
+      star: false,
+      brightLess: 30,
+      colorTemperature: 12,
+      statusActiveIndex: -1,
+      statusList: [
+        {
+          name: " Work  ",
+          active: false,
+          icon: "#icon-briefcase",
+          data: [40, 75]
+        },
+        {
+          name: "Slumber",
+          active: false,
+          icon: "#icon-sleep",
+          data: [90, 50]
+        },
+        {
+          name: "Makeup",
+          active: false,
+          icon: "#icon-Bathroommakeupmagn",
+          data: [50, 100]
+        }
+      ]
     };
+  },
+  computed: {
+    lightColor() {
+      return `rgb(${(217 * this.brightLess) / 100 +
+        this.colorTemperature},${(244 * this.brightLess) / 100 + this.colorTemperature},${(255 *
+        this.brightLess) /
+        100 + this.colorTemperature})`;
+    }
   },
   methods: {
     back() {
       this.$router.back();
+    },
+    clickTab(index) {
+      this.statusActiveIndex = index;
+      this.brightLess = this.statusList[index].data[0];
+      this.colorTemperature = this.statusList[index].data[1];
     }
   }
 };
@@ -126,8 +243,27 @@ export default {
       width: 180px;
       box-shadow: -3px -3px 5px #ffffff, 5px 5px 5px #e4f8ff;
       border-radius: 50%;
-      background: #d9f4ff;
+      transition: background 0.3s;
+      /*background: #d9f4ff;*/
     }
+  }
+}
+.slide-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-panel {
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
   }
 }
 </style>

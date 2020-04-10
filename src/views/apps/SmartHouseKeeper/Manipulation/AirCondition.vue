@@ -145,7 +145,6 @@ export default {
           icon: "#icon-sleep",
           data: [50, 100, 65]
         }
-        // { name: "Napping", active: false, icon: "#icon-chair" }
       ]
     };
   },
