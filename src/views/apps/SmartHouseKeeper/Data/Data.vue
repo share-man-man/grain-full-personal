@@ -192,7 +192,7 @@ export default {
 .ep-power {
   overflow-x: auto;
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
   .p{
     font-size: 20px;
     color: $GrainFullMainColor;

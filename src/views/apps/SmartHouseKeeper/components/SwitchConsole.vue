@@ -1,17 +1,19 @@
 <template>
   <div class="switch">
-    <grain-full-icon :name="iconName" :size="50" />
-    <span class="p">
-      {{ name }}
-    </span>
+    <slot name="icon">
+      <grain-full-icon :name="iconName" :size="50" />
+    </slot>
+    <slot name="p">
+      <span class="p">
+        {{ name }}
+      </span>
+    </slot>
     <div>
       <slot name="item3">
         <grain-full-switch v-model="switchModel" />
       </slot>
     </div>
-    <slot name="info">
-<!--      <div style="height: 20px;width: 20px;background-color: #42b983">asd</div>-->
-    </slot>
+    <slot name="info"> </slot>
   </div>
 </template>
 

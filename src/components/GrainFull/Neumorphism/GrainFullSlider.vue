@@ -16,7 +16,7 @@
       >
         <slot name="button">
           <div class="slider-progress-button-default p">
-            {{ value }}
+            {{ !showButtonInfo ? "" : value }}
           </div>
         </slot>
       </div>
@@ -45,6 +45,10 @@ export default {
     },
     progressStyle: {
       type: Object
+    },
+    showButtonInfo: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

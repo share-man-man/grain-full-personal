@@ -46,7 +46,7 @@
       </div>
       <div style="display: flex;justify-content: center;align-items: center">
         <grain-full-circle
-          size="180px"
+          size="230px"
           :percent="temperaturePercent"
           dotted-line-divide-num="15"
         >

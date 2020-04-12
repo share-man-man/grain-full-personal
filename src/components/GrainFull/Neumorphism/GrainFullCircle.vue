@@ -137,6 +137,12 @@ export default {
       type: [Number, String],
       default: 12
     },
+    dottedLineBackColor: {
+      type: String
+    },
+    dottedLineActiveColor: {
+      type: String
+    },
     activeColor: {
       type: String
     },
@@ -147,6 +153,17 @@ export default {
     activeDarkColor: {
       type: String,
       default: "#54CE94"
+    },
+    // dottedLineShowLength:{
+    //   type:Number,
+    //   default : 0
+    // },
+    dottedLineType: {
+      default: "default",
+      type: String,
+      validator(value) {
+        return ["default", "line"].indexOf(value) !== -1;
+      }
     }
   },
   data() {
@@ -178,11 +195,18 @@ export default {
         stroke: `url(#${this.activeDarkColor + this.activeLightColor})`
       };
     },
+    //虚线进度条每份展示长度
+    dottedLineShowLength() {
+      return this.dottedLineType === "line" ? 20 : 0;
+    },
     //虚线进度条背景样式
     dottedLineBackStyle() {
       return {
-        "stroke-dasharray": `0%, ${this.dottedLineLength}px`
-        // "stroke-width": `15px`
+        "stroke": this.dottedLineBackColor || "",
+        "stroke-dasharray": `${this.dottedLineShowLength}px, ${this
+          .dottedLineLength - this.dottedLineShowLength}px`,
+        "stroke-linecap": this.dottedLineType === "line" ? "butt" : "round",
+        "stroke-width": `${this.dottedLineType === "line" ? 55 : 20}px`
       };
     },
     //虚线进度条激活样式
@@ -190,14 +214,18 @@ export default {
       const num = Math.floor(
         (this.dottedLineDivideNum * this.finalPercent) / 100
       );
-      let str = "0px ";
+      let str = `${this.dottedLineShowLength}px `;
       for (let i = 0; i < num; i++) {
-        str += ` ${this.dottedLineLength}px 0px`;
+        str += ` ${this.dottedLineLength - this.dottedLineShowLength}px ${
+          this.dottedLineShowLength
+        }px`;
       }
       str += ` ${this.dottedLineLength * this.dottedLineDivideNum}px`;
       return {
+        "stroke-linecap": this.dottedLineType === "line" ? "butt" : "round",
+        "stroke-width": `${this.dottedLineType === "line" ? 55 : 30}px`,
         "stroke-dasharray": str,
-        stroke: this.activeColor || ""
+        "stroke": this.dottedLineActiveColor || this.activeColor || ""
       };
     },
     //指针定位样式

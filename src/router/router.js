@@ -68,11 +68,19 @@ const routes = [
       {
         path: "lighting-control",
         component: () =>
-            import(
-                "../views/apps/SmartHouseKeeper/LightingControl/LightingControl.vue"
-                ),
+          import(
+            "../views/apps/SmartHouseKeeper/LightingControl/LightingControl.vue"
+          ),
         meta: {
           title: "灯光控制"
+        }
+      },
+      {
+        path: "sound-box",
+        component: () =>
+          import("../views/apps/SmartHouseKeeper/SoundBox/SoundBox.vue"),
+        meta: {
+          title: "音响"
         }
       }
     ]

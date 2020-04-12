@@ -20,7 +20,12 @@ export default {
   data() {
     return {
       switchList: [
-        { active: false, iconName: "#icon-sound", name: "SoundBox" },
+        {
+          active: false,
+          iconName: "#icon-sound",
+          name: "SoundBox",
+          path: "sound-box"
+        },
         { active: true, iconName: "#icon-fridge", name: "Fridge" },
         {
           active: false,
