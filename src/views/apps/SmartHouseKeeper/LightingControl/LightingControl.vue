@@ -260,10 +260,10 @@ export default {
   align-items: center;
   overflow-y: hidden;
   overflow-x: auto;
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    background: transparent;
-  }
+  /*&::-webkit-scrollbar {*/
+  /*  display: none;*/
+  /*  width: 0;*/
+  /*  background: transparent;*/
+  /*}*/
 }
 </style>

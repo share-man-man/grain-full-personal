@@ -15,7 +15,7 @@
         :active="statusActiveIndex === index"
         @click.native="statusActiveIndex = index"
         icon="#icon-guizi-"
-        style="margin: 15px 0 15px 30px"
+        style="margin: 15px 0 15px 30px;"
       >
         <grain-full-icon :name="item.icon" />
         <p style="margin:0 0 0 5px;font-size: 13px;font-weight: 500">
@@ -113,15 +113,14 @@ export default {
 }
 
 .scroll-panel {
-  margin-top: 0px;
+  overflow-x: scroll;
   display: flex;
   align-items: center;
-  overflow-y: hidden;
-  overflow-x: auto;
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    background: transparent;
-  }
+  justify-content: flex-start;
+  /*&::-webkit-scrollbar {*/
+    /*display: none;*/
+    /*width: 0;*/
+    /*background: transparent;*/
+  /*}*/
 }
 </style>

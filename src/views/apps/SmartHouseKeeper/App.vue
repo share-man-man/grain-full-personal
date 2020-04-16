@@ -1,9 +1,16 @@
 <template>
-  <div
-    class="container"
-    :style="{ height: windowHeight + 'px', width: windowWidth + 'px' }"
-  >
-    <router-view />
+  <!--  <div-->
+  <!--    class="container"-->
+  <!--    :style="{ height: windowHeight + 'px', width: windowWidth + 'px' }"-->
+  <!--  >-->
+  <div class="container">
+    <div style="height: 1px"></div>
+    <div
+      :class="['container-content', isMobile ? 'mobile' : '']"
+      :style="{ 'max-width': 375 + 'px' }"
+    >
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -15,6 +22,11 @@ export default {
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth
     };
+  },
+  computed: {
+    isMobile() {
+      return this.windowWidth > 992;
+    }
   }
 };
 </script>
@@ -22,5 +34,15 @@ export default {
 <style scoped lang="scss">
 .container {
   background-color: $GrainFullBackgroundColor;
+  height: 100%;
+  &-content {
+    height: 100%;
+    max-height: 812px;
+    &.mobile {
+      @include neumorphism("flat", 350px, 42px, 6px, 0.08, 7px);
+      min-height: 667px;
+    }
+    margin: 10% auto;
+  }
 }
 </style>

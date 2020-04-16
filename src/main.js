@@ -8,11 +8,11 @@ import store from "./store/store";
 // import "element-ui/lib/theme-chalk/index.css";
 // Vue.use(ElementUI);
 //
-//引入vant
-import Vant from "vant";
-import "vant/lib/index.css";
-import '@vant/touch-emulator';/*桌面端mouse事件*/
-Vue.use(Vant);
+// //引入vant
+// import Vant from "vant";
+// import "vant/lib/index.css";
+// import '@vant/touch-emulator';/*桌面端mouse事件*/
+// Vue.use(Vant);
 
 //引入自定义icon
 import "./assets/icon/iconfont"

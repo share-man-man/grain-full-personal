@@ -1,18 +1,12 @@
 <template>
-  <div>
-    <div style="margin-top: 20px">
-      <grain-full-slider v-model="percent2" :max="40" :min="-10" />
-    </div>
-    <div style="margin-top: 20px">
-      <van-slider v-model="percent1" :min="-10" :max="40" />
-    </div>
-    <button @click="test" style="margin-top: 20px">asdasdas</button>
+  <div style="overflow-x: scroll">
+    <div style="width: 10000px;height: 300px;background-color: #42b983"></div>
   </div>
 </template>
 <script>
 // import GrainFullCircle from "../../components/GrainFull/Neumorphism/GrainFullCircle";
 // import GrainFullButton from "../../components/GrainFull/Neumorphism/GrainFullButton";
-import GrainFullSlider from "../../components/GrainFull/Neumorphism/GrainFullSlider";
+// import GrainFullSlider from "../../components/GrainFull/Neumorphism/GrainFullSlider";
 
 import { Slider, Toast } from "vant";
 
@@ -20,7 +14,7 @@ export default {
   name: "login",
   components: {
     [Slider.name]: Slider,
-    GrainFullSlider
+    // GrainFullSlider
     // GrainFullButton,
     // GrainFullCircle
   },

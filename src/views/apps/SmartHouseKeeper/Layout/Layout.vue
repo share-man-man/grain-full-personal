@@ -82,6 +82,7 @@ export default {
   height: 100%;
 }
 .content {
+  margin-top: 40px;
   flex: 1;
   overflow-y: auto;
 }
