@@ -7,7 +7,7 @@ module.exports = {
   //默认输出路径
   outputDir: "./dist",
   //应用路径，默认为跟路径./
-  publicPath: process.env.NODE_ENV === "development" ? "/" : "/",
+  publicPath: process.env.NODE_ENV === "development" ? process.env.VUE_APP_PAGES === "gitee" ? "grain-full-personal" : "/" : "/",
   //开发环境生成MapSource文件以调试断点
   productionSourceMap: process.env.NODE_ENV === "development",
   //开发服务器
