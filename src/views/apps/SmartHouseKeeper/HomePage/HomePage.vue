@@ -113,14 +113,14 @@ export default {
 }
 
 .scroll-panel {
-  overflow-x: scroll;
+  overflow-x: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   /*&::-webkit-scrollbar {*/
-    /*display: none;*/
-    /*width: 0;*/
-    /*background: transparent;*/
+  /*  !*display: none;*!*/
+  /*  !*width: 0;*!*/
+  /*  background: transparent;*/
   /*}*/
 }
 </style>

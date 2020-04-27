@@ -4,11 +4,8 @@
   <!--    :style="{ height: windowHeight + 'px', width: windowWidth + 'px' }"-->
   <!--  >-->
   <div class="container">
-    <div style="height: 1px"></div>
-    <div
-      :class="['container-content', isMobile ? '' : 'vm-mobile']"
-      :style="{ 'max-width': 992 + 'px' }"
-    >
+    <!--        <div style="height: 1px"></div>-->
+    <div :class="['container-content', isMobile ? '' : 'vm-mobile']">
       <router-view />
     </div>
   </div>
@@ -25,7 +22,7 @@ export default {
   },
   computed: {
     isMobile() {
-      return this.windowWidth < 992;
+      return this.windowWidth < 441;
     }
   }
 };
@@ -35,14 +32,17 @@ export default {
 .container {
   background-color: $GrainFullBackgroundColor;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &-content {
     height: 100%;
-    max-height: 812px;
+    width: 100%;
     &.vm-mobile {
       @include neumorphism("flat", 350px, 42px, 6px, 0.08, 7px);
-      min-height: 667px;
+      max-width: 440px;
+      max-height: 805px;
     }
-    margin: 0 auto;
   }
 }
 </style>

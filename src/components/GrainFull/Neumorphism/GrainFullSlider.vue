@@ -10,7 +10,8 @@
       }"
     >
       <div
-        @touchstart.prevent="mouseDown"
+        @touchstart.prevent="touchDown"
+        @mousedown.prevent="mouseDown"
         class="slider-progress-button"
         ref="button"
       >
@@ -65,7 +66,8 @@ export default {
     }
   },
   methods: {
-    mouseDown(e) {
+    // 触摸事件
+    touchDown(e) {
       this.click = true;
       //记录鼠标按下的位置
       this.clickX = e.changedTouches[0].clientX;
@@ -75,10 +77,24 @@ export default {
       document.addEventListener("touchmove", this.fnMove);
       document.addEventListener("touchend", this.fnUp);
     },
+    // 鼠标点击事件
+    mouseDown(e) {
+      this.click = true;
+      //记录鼠标按下的位置
+      this.clickX = e.clientX;
+      this.clickWidth = this.$refs.progress.clientWidth;
+      document.addEventListener("mousemove", this.fnMove);
+      document.addEventListener("mouseup", this.fnUp);
+      // document.addEventListener("touchmove", this.fnMove);
+      // document.addEventListener("touchend", this.fnUp);
+    },
     fnMove(e) {
       if (this.click) {
+        // const x = e.clientX + 1 || e.changedTouches[0].clientX + 1;
         let temporaryValue =
-          (e.changedTouches[0].clientX - this.clickX + this.clickWidth) /
+          ((e.clientX + 1 || e.changedTouches[0].clientX + 1) -
+            this.clickX +
+            this.clickWidth) /
           this.$refs.slider.clientWidth;
         this.$emit(
           "input",
@@ -91,8 +107,8 @@ export default {
     },
     fnUp() {
       this.click = false;
-      // document.removeEventListener("mousemove", this.fnMove);
-      // document.removeEventListener("mouseup", this.fnUp);
+      document.removeEventListener("mousemove", this.fnMove);
+      document.removeEventListener("mouseup", this.fnUp);
       document.removeEventListener("touchmove", this.fnMove);
       document.removeEventListener("touchend", this.fnUp);
     }
