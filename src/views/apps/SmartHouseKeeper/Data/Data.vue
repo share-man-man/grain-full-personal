@@ -34,7 +34,7 @@
     </div>
     <div class="month-data">
       <div
-        v-for="(item, index) in monthDataList[monthIndex].data"
+        v-for="(item, index) in monthData"
         :key="index"
         :class="['month-data-item']"
       >
@@ -60,7 +60,7 @@
         style="margin: 20px 20px 20px 20px"
       >
         <template v-slot:item3>
-          <p class="p">{{item.data}}</p>
+          <p class="p">{{ item.data }}</p>
         </template>
       </switch-console>
     </div>
@@ -93,26 +93,56 @@ export default {
           name: "Jan.",
           data: [32, 12, 44, 32, 12, 33, 22, 12, 31, 21, 21, 12]
         },
-        { name: "Feb.", data: [] },
-        { name: "Mar.", data: [] },
-        { name: "Apr.", data: [] },
-        { name: "May.", data: [] },
-        { name: "June.", data: [] },
-        { name: "July.", data: [] },
-        { name: "Aug.", data: [] },
-        { name: "Sept.", data: [] },
-        { name: "Oct.", data: [] },
-        { name: "Nov.", data: [] },
-        { name: "Dec.", data: [] }
+        { name: "Feb.", data: [11, 22, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] },
+        {
+          name: "Mar.",
+          data: [32, 12, 44, 32, 12, 33, 22, 12, 31, 21, 21, 12]
+        },
+        { name: "Apr.", data: [21, 22, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] },
+        {
+          name: "May.",
+          data: [32, 12, 33, 32, 12, 33, 22, 12, 31, 21, 21, 12]
+        },
+        { name: "June.", data: [21, 22, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] },
+        {
+          name: "July.",
+          data: [32, 32, 44, 32, 12, 33, 22, 12, 31, 21, 21, 12]
+        },
+        { name: "Aug.", data: [11, 22, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] },
+        {
+          name: "Sept.",
+          data: [11, 12, 2, 32, 12, 33, 22, 12, 31, 21, 21, 12]
+        },
+        { name: "Oct.", data: [11, 9, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] },
+        {
+          name: "Nov.",
+          data: [6, 12, 44, 32, 12, 33, 22, 12, 31, 21, 21, 12]
+        },
+        { name: "Dec.", data: [32, 22, 44, 21, 1, 2, 4, 32, 7, 10, 21, 12] }
       ],
       temperature: 494,
       dayOrWeek: false,
       particulars: "Particulars   :",
       epList: [
-        { active: false, iconName: "#icon-sound", name: "SoundBox",data:'41%' },
-        { active: true, iconName: "#icon-fridge", name: "Fridge",data:'23%' },
-        { active: false, iconName: "#icon-jiajudeng-", name: "PorchLight",data:'11%' },
-        { active: false, iconName: "#icon-jiajukongtiao-", name: "A/C",data:'40%' }
+        {
+          active: false,
+          iconName: "#icon-sound",
+          name: "SoundBox",
+          data: "41%"
+        },
+        { active: true, iconName: "#icon-fridge", name: "Fridge", data: "23%" },
+        {
+          active: false,
+          iconName: "#icon-jiajudeng-",
+          name: "PorchLight",
+          data: "11%"
+        },
+        {
+          active: false,
+          iconName: "#icon-jiajukongtiao-",
+          name: "A/C",
+          data: "40%"
+        }
       ]
     };
   },
@@ -121,6 +151,9 @@ export default {
       return this.monthDataList[this.monthIndex].data.reduce((a, b) => {
         return a > b ? a : b;
       });
+    },
+    monthData() {
+      return this.monthDataList[this.monthIndex].data;
     }
   }
 };
@@ -193,7 +226,7 @@ export default {
   overflow-x: auto;
   display: flex;
   /*justify-content: space-around;*/
-  .p{
+  .p {
     font-size: 20px;
     color: $GrainFullMainColor;
     font-weight: 500;
