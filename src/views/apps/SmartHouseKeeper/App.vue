@@ -6,8 +6,8 @@
   <div class="container">
     <div style="height: 1px"></div>
     <div
-      :class="['container-content', isMobile ? 'mobile' : '']"
-      :style="{ 'max-width': 375 + 'px' }"
+      :class="['container-content', isMobile ? '' : 'vm-mobile']"
+      :style="{ 'max-width': 992 + 'px' }"
     >
       <router-view />
     </div>
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     isMobile() {
-      return this.windowWidth > 992;
+      return this.windowWidth < 992;
     }
   }
 };
@@ -38,11 +38,11 @@ export default {
   &-content {
     height: 100%;
     max-height: 812px;
-    &.mobile {
+    &.vm-mobile {
       @include neumorphism("flat", 350px, 42px, 6px, 0.08, 7px);
       min-height: 667px;
     }
-    margin: 10% auto;
+    margin: 0 auto;
   }
 }
 </style>
