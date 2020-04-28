@@ -11,6 +11,7 @@
         <switch-console
           class="panels-item"
           v-for="(item, index) in panelItems"
+          @click.native="click(item.data)"
           :key="index"
           :name="item.name"
           :icon-name="item.iconName"
@@ -84,7 +85,7 @@
           height="30px"
           style="margin: 20px 15px"
         >
-          <grain-full-icon name="#icon-cc-peach"/>
+          <grain-full-icon name="#icon-cc-peach" />
         </grain-full-button>
         <grain-full-button
           type="circular"
@@ -143,12 +144,12 @@ export default {
       subWoofer: 32,
       volume: 78,
       panelItems: [
-        { name: "Classics" },
-        { name: "Pop" },
-        { name: "Piano" },
-        { name: "Blues" },
-        { name: "Ballad" },
-        { name: "Rock" }
+        { name: "Classics", data: [32, 11] },
+        { name: "Pop" , data: [87, 1]},
+        { name: "Piano", data: [8, 99] },
+        { name: "Blues" , data: [1, 55]},
+        { name: "Ballad" , data: [43, 21]},
+        { name: "Rock" , data: [66, 89]}
       ],
       sonProgress: 76
     };
@@ -156,6 +157,10 @@ export default {
   methods: {
     back() {
       this.$router.back();
+    },
+    click(data) {
+      this.subWoofer = data[0];
+      this.volume = data[1];
     }
   }
 };
