@@ -1,24 +1,25 @@
 # grain-full-personal
 
-## Project setup
+### 项目演示地址
+[智能家居app演示地址](http://shuxiaoman.gitee.io/grain-full-personal/).
+
+## 安装依赖包：需要设置成淘宝的镜像才能下载
 ```
+yarn config set registry https://registry.npm.taobao.org/
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 运行项目
 ```
-yarn serve
+yarn dev
 ```
 
-### Compiles and minifies for production
+### 编译项目
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 代码校验
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
