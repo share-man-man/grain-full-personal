@@ -66,6 +66,7 @@ export default {
   methods: {
     changeIndex(index) {
       if (this.$route.path !== this.tabBarList[index].path) {
+        this.$router.slid = 'right'
         this.$router.push({
           path: this.tabBarList[index].path
         });

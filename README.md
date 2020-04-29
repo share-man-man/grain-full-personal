@@ -40,3 +40,5 @@ yarn lint
 8. async/await和promise：async/await只是promise的语法糖，具体怎么用看业务场景，有些复杂的链式调用用await可以更直观，普通的异步请求直接用promise更直观。
 9. 组件对window的事件监听：在beforeCreated()的时候监听，在afterDestoried()的时候销毁，避免造成内存泄漏
 10. 路由refresh：在进入keep-alive的某些组件时，需要重新刷新，最简单的办法是用v-if和vuex，通过vuex将该组件设置为false，再在异步函数里通过路由方法跳转（<font color="red">注意：必须使用异步函数，[原因参见官网](https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97)</font>）
+11. 路由动态过渡：改变$router的slide参数，在app.vue里watch路由的变化，通过$router.slide参数改变相应的渲染效果（其实就是左右滑动）。
+12. 小技巧：有transform属性的元素，display:fixed不会以viewport为目标，而是有transform属性的元素（利用这一特性，完成路由左右滑动功能）

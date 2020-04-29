@@ -45,6 +45,7 @@ export default {
   methods: {
     toPath(path) {
       if (path) {
+        this.$router.slid = 'right'
         this.$router.push({
           path: path
         });

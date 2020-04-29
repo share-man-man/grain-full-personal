@@ -180,6 +180,7 @@ export default {
   },
   methods: {
     back() {
+      this.$router.slid = 'left'
       this.$router.back();
     },
     clickTab(index) {
