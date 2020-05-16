@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
-    <div :class="['container-content', isMobile ? '' : 'vm-mobile']">
-      <transition :name="transitionName">
-        <router-view />
-      </transition>
-    </div>
+  <!--  <div class="container">-->
+  <!--  <div>-->
+  <!--    <div :class="['container-content', isMobile ? '' : 'vm-mobile']">-->
+  <div style="height: 100%">
+    <transition :name="transitionName">
+      <router-view />
+    </transition>
   </div>
+  <!--  </div>-->
 </template>
 
 <script>

@@ -1,5 +1,10 @@
 <template>
-  <div :style="['@include neumorphism(\'convex\', 20px, 30px, 1px, 0.13, 9px)']" @click="test">{{ name }}</div>
+  <div
+    :style="['@include neumorphism(\'convex\', 20px, 30px, 1px, 0.13, 9px)']"
+    @click="test"
+  >
+    {{ name }}
+  </div>
 </template>
 
 <script>

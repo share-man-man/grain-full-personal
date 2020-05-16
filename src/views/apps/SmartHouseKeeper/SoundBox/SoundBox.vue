@@ -145,18 +145,18 @@ export default {
       volume: 78,
       panelItems: [
         { name: "Classics", data: [32, 11] },
-        { name: "Pop" , data: [87, 1]},
+        { name: "Pop", data: [87, 1] },
         { name: "Piano", data: [8, 99] },
-        { name: "Blues" , data: [1, 55]},
-        { name: "Ballad" , data: [43, 21]},
-        { name: "Rock" , data: [66, 89]}
+        { name: "Blues", data: [1, 55] },
+        { name: "Ballad", data: [43, 21] },
+        { name: "Rock", data: [66, 89] }
       ],
       sonProgress: 76
     };
   },
   methods: {
     back() {
-      this.$router.slid = 'left'
+      this.$router.slid = "left";
       this.$router.back();
     },
     click(data) {

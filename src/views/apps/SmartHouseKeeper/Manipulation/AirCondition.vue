@@ -150,7 +150,7 @@ export default {
   },
   methods: {
     back() {
-      this.$router.slid = 'left'
+      this.$router.slid = "left";
       this.$router.back();
     },
     test() {
@@ -167,7 +167,7 @@ export default {
     }
   },
   mounted() {
-    this.clickTab(0)
+    this.clickTab(0);
   }
 };
 </script>

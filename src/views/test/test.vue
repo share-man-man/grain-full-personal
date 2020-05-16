@@ -13,7 +13,7 @@ import { Slider, Toast } from "vant";
 export default {
   name: "login",
   components: {
-    [Slider.name]: Slider,
+    [Slider.name]: Slider
     // GrainFullSlider
     // GrainFullButton,
     // GrainFullCircle

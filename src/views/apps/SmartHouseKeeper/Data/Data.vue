@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p class="p">{{ $options.name }}</p>
     <grain-full-tab
       v-model="monthIndex"
       :tags-scroll="true"

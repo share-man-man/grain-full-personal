@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p class="p">{{ $options.name }}</p>
     <div class="person">
       <div class="person-head">
         <grain-full-icon name="#icon-mine" :size="60" />
@@ -41,7 +40,12 @@ export default {
     return {
       panelItems: [
         { name: "Member", iconName: "#icon-member", info: "3", path: "" },
-        { name: "Device", iconName: "#icon-deviceicons-deskt", info: "2", path: "" },
+        {
+          name: "Device",
+          iconName: "#icon-deviceicons-deskt",
+          info: "2",
+          path: ""
+        },
         { name: "Message", iconName: "#icon-message", info: "4", path: "" },
         { name: "Scenario", iconName: "#icon-canshu", info: "", path: "" },
         { name: "Setting", iconName: "#icon-outline", info: "0", path: "" },

@@ -1,25 +1,30 @@
 <template>
   <div class="float-tag">
-<!--    <div class="float-tag-left">-->
-<!--      <div class="float-tag-left-inner"></div>-->
-<!--    </div>-->
     <el-avatar icon="el-icon-user-solid"></el-avatar>
-    <i class="el-icon-s-unfold" style="font-size: 25px;color: #697e9e;margin-right: 5px"></i>
+    <i
+      class="el-icon-s-unfold"
+      style="font-size: 25px;color: #697e9e;margin-right: 5px"
+    ></i>
   </div>
 </template>
 
 <script>
+import { Avatar } from "element-ui";
+
 export default {
-  name: "FloatTag"
+  name: "FloatTag",
+  components: {
+    [Avatar.name]: Avatar
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-$allHeight:40px;
-$allRadius:40px;
+$allHeight: 40px;
+$allRadius: 40px;
 .float-tag {
   position: fixed;
-  z-index:99;
+  z-index: 99;
   top: 85px;
   right: 0px;
   height: $allHeight;
@@ -29,6 +34,11 @@ $allRadius:40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: -1px 0px 2px #8b8da0;
+
+  // 呼吸边框阴影
+  animation: breath-round 0.7s infinite alternate;
+  /*animation-direction:alternate;*/
 
   &-left {
     height: $allHeight;
@@ -38,12 +48,22 @@ $allRadius:40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    &-inner{
+
+    &-inner {
       height: $allHeight - 10px;
       width: $allHeight - 10px;
       border-radius: $allRadius $allRadius $allRadius $allRadius;
       background-color: #b4b3b5;
     }
+  }
+}
+
+@keyframes breath-round {
+  0% {
+    box-shadow: 0px 0px 2px #b3b6ca;
+  }
+  100% {
+    box-shadow: -1px 0px 8px #787a8d;
   }
 }
 </style>

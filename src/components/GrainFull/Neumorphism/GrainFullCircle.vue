@@ -202,7 +202,7 @@ export default {
     //虚线进度条背景样式
     dottedLineBackStyle() {
       return {
-        "stroke": this.dottedLineBackColor || "",
+        stroke: this.dottedLineBackColor || "",
         "stroke-dasharray": `${this.dottedLineShowLength}px, ${this
           .dottedLineLength - this.dottedLineShowLength}px`,
         "stroke-linecap": this.dottedLineType === "line" ? "butt" : "round",
@@ -225,7 +225,7 @@ export default {
         "stroke-linecap": this.dottedLineType === "line" ? "butt" : "round",
         "stroke-width": `${this.dottedLineType === "line" ? 55 : 30}px`,
         "stroke-dasharray": str,
-        "stroke": this.dottedLineActiveColor || this.activeColor || ""
+        stroke: this.dottedLineActiveColor || this.activeColor || ""
       };
     },
     //指针定位样式

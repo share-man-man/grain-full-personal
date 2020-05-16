@@ -24,15 +24,15 @@ service.interceptors.request.use(
 
 // 设置返回拦截器
 service.interceptors.response.use(response => {
-  return response.data
+  return response.data;
   // const code = response.status;
   // if (code === 200) {
-    // /* 后台数据处理出错*/
-    // if (response.data.errors) {
-    //   return Promise.reject(response.data.errors)
-    // } else {
-    //   return response.data
-    // }
+  // /* 后台数据处理出错*/
+  // if (response.data.errors) {
+  //   return Promise.reject(response.data.errors)
+  // } else {
+  //   return response.data
+  // }
   // } else {
   //   return Promise.reject("请求失败，请检查网络");
   // }
@@ -43,7 +43,7 @@ const requestOption = {
   url: "",
   method: "post",
   data: "",
-  params:""
+  params: ""
 };
 
 function sendRequest(confirmParam) {

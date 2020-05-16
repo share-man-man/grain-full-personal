@@ -16,21 +16,21 @@
 import SwitchConsole from "./SwitchConsole";
 
 export default {
-  name: "Usual",
+  name: "BathRoom",
   components: { SwitchConsole },
   data() {
     return {
       switchList: [
         {
-          active: false,
-          iconName: "#icon-sound",
-          name: "SoundBox",
-          path: "sound-box"
-        },
-        {
           active: true,
           iconName: "#icon-fridge",
           name: "Fridge"
+        },
+        {
+          active: true,
+          iconName: "#icon-sound",
+          name: "SoundBox",
+          path: "sound-box"
         },
         {
           active: false,

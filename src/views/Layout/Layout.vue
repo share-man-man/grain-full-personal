@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-container>
+  <div style="height:100%">
+    <el-container style="height:100%">
       <!--      移动端遮罩层-->
       <div
         v-if="sidebarShowing && isMobile"
@@ -12,6 +12,7 @@
         <aside-menu
           v-show="sidebarShowing"
           :class="appSidebarClass"
+          @toRoute="toRoute"
         ></aside-menu>
       </transition>
       <!--      浮动框标签框-->
@@ -22,28 +23,52 @@
         <!--          <i class="el-icon-menu" @click="test"></i>-->
         <!--          Header-->
         <!--        </el-header>-->
-        <el-main>
-          <router-view />
+        <el-main style="padding: 0px">
+          <!--自定义展示界面-->
+          <self-main :vm-mobile="vmMobile"></self-main>
         </el-main>
-        <el-footer>Footer</el-footer>
+        <!--        <el-footer>Footer</el-footer>-->
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script>
+import { Container, Main, Footer } from "element-ui";
 import ResizeHandler from "./mixin/ResizeHandler";
 import { mapState } from "vuex";
 import AsideMenu from "./components/AsideMenu";
 import FloatTag from "./components/FloatTag";
+import SelfMain from "./components/SelfMain";
 export default {
   name: "Layout",
-  components: {FloatTag, AsideMenu },
+  components: {
+    SelfMain,
+    FloatTag,
+    AsideMenu,
+    [Container.name]: Container,
+    [Main.name]: Main,
+    [SelfMain.name]: SelfMain,
+    [Footer.name]: Footer
+  },
   mixins: [ResizeHandler],
   data: function() {
     return {
-      testData: false
+      // vmMobile: true
     };
+  },
+  watch: {
+    // $route: {
+    //   handler(to) {
+    //     setTimeout(() => {
+    //       const path = ["smart-house-keeper"];
+    //       const inPath = to.path && path.includes(to.path.split("/")[1]);
+    //       // 非移动端用户，进入移动端路径
+    //       this.vmMobile = !this.isMobile && inPath;
+    //     });
+    //   },
+    //   immediate: true
+    // }
   },
   computed: {
     ...mapState({
@@ -55,11 +80,26 @@ export default {
     //侧边栏响应式样式
     appSidebarClass() {
       return !this.isMobile ? "" : "app-sidebar";
+    },
+    vmMobile() {
+      const path = ["smart-house-keeper"];
+      const inPath =
+        this.$route.path && path.includes(this.$route.path.split("/")[1]);
+      // 非移动端用户，进入移动端路径
+      return !this.isMobile && inPath;
     }
   },
   methods: {
     closeOverlay() {
       this.$store.commit("sidebar/setSpreading", { isMobile: this.isMobile });
+    },
+    toRoute(path) {
+      if (this.$route.path !== path) {
+        this.closeOverlay();
+        this.$router.push({
+          path: path
+        });
+      }
     }
   }
 };
@@ -85,7 +125,7 @@ export default {
   background-color: white;
   color: #333;
   text-align: center;
-  min-height: calc(100vh - 60px);
+  /*min-height: calc(100vh - 60px);*/
 }
 
 .overlay {
@@ -105,7 +145,7 @@ export default {
   z-index: 99999;
 }
 
-/*过渡动画*/
+// 过渡动画
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }

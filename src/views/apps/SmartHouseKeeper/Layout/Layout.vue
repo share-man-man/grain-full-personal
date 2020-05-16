@@ -1,5 +1,9 @@
 <template>
   <div class="body">
+    <div class="header">
+      <!--      <div style="height: 1px"></div>-->
+      <p class="p">{{ title }}</p>
+    </div>
     <!--展示页面-->
     <div class="content">
       <router-view />
@@ -43,20 +47,25 @@ export default {
           name: "Mine",
           path: "/smart-house-keeper/mine"
         }
-      ]
+      ],
+      title: ""
     };
   },
   watch: {
-    $route(to) {
-      this.tabBarList.forEach((item, index) => {
-        if (item.path === to.path) {
-          this.tabBarIndex = index;
-        }
-      });
+    $route: {
+      handler(to) {
+        this.tabBarList.forEach((item, index) => {
+          if (item.path === to.path) {
+            this.tabBarIndex = index;
+          }
+        });
+
+        this.title = to.meta.title;
+      },
+      immediate: true
     }
   },
   mounted() {
-    // console.log(this.$route)
     this.tabBarList.forEach((item, index) => {
       if (item.path === this.$route.path) {
         this.tabBarIndex = index;
@@ -66,7 +75,7 @@ export default {
   methods: {
     changeIndex(index) {
       if (this.$route.path !== this.tabBarList[index].path) {
-        this.$router.slid = 'right'
+        this.$router.slid = "right";
         this.$router.push({
           path: this.tabBarList[index].path
         });
@@ -77,18 +86,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.p {
+  @include neumorphism-default;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px auto;
+  white-space: pre;
+}
+
 .body {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 .content {
-  margin-top: 40px;
+  /*margin-top: 40px;*/
   flex: 1;
   overflow-y: auto;
 }
 .foot {
   height: 75px;
   margin-top: 10px;
+}
+.header {
+  /*不能放在body里，否则两个函数都不能渲染*/
+  padding-top: constant(safe-area-inset-top); /* 兼容 iOS < 11.2 */
+  padding-top: env(safe-area-inset-top); /* 兼容 iOS >= 11.2 */
 }
 </style>

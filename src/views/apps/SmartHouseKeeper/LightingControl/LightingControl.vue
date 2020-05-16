@@ -173,14 +173,14 @@ export default {
   computed: {
     lightColor() {
       return `rgb(${(217 * this.brightLess) / 100 +
-        this.colorTemperature},${(244 * this.brightLess) / 100 + this.colorTemperature},${(255 *
-        this.brightLess) /
-        100 + this.colorTemperature})`;
+        this.colorTemperature},${(244 * this.brightLess) / 100 +
+        this.colorTemperature},${(255 * this.brightLess) / 100 +
+        this.colorTemperature})`;
     }
   },
   methods: {
     back() {
-      this.$router.slid = 'left'
+      this.$router.slid = "left";
       this.$router.back();
     },
     clickTab(index) {

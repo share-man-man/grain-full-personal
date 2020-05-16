@@ -1,7 +1,8 @@
 import store from "../../../store/store";
 
 const { body } = document;
-const WIDTH = 992; // refer to Bootstrap's responsive design
+// const WIDTH = 992; // refer to Bootstrap's responsive design
+const WIDTH = 440;
 
 export default {
   watch: {
@@ -15,6 +16,16 @@ export default {
     }
   },
 
+  // 判断是否为移动端用户
+  beforeCreate() {
+    if (!document.hidden) {
+      const rect = body.getBoundingClientRect();
+      const isMobile = rect.width - 1 < WIDTH;
+      store.dispatch("app/setMobile", { flag: isMobile });
+      store.commit("sidebar/init", isMobile);
+    }
+  },
+
   //暂时不添加视窗改变的事件监听
   // beforeMount() {
   //   window.addEventListener("resize", this.$_resizeHandler);
@@ -24,7 +35,7 @@ export default {
   // },
 
   mounted() {
-    this.$_resizeHandler();
+    // this.$_resizeHandler();
   },
   methods: {
     // use $_ for mixins properties

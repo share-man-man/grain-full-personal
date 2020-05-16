@@ -55,9 +55,9 @@ export default {
   font-weight: 600;
   border: 1px solid #f1f1f1;
   &.active {
-    @include neumorphism("concave",40px, 10px, 5px, 0.13, 9px);
+    @include neumorphism("concave", 40px, 10px, 5px, 0.13, 9px);
     color: $GrainFullMainColor;
-    & svg{
+    & svg {
       color: $GrainFullMainColor;
     }
   }

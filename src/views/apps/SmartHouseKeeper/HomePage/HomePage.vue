@@ -13,7 +13,7 @@
         v-for="(item, index) in statusList"
         :key="index"
         :active="statusActiveIndex === index"
-        @click.native="statusActiveIndex = index"
+        @click.native="clickPanel(index)"
         icon="#icon-guizi-"
         style="margin: 15px 0 15px 30px;"
       >
@@ -34,15 +34,15 @@
       <grain-full-tab-item name="Usual">
         <usual />
       </grain-full-tab-item>
-      <grain-full-tab-item name="LivingRoom"
-        ><test-compo name="222"></test-compo
-      ></grain-full-tab-item>
-      <grain-full-tab-item name="BedRoom"
-        ><test-compo name="333"></test-compo
-      ></grain-full-tab-item>
-      <grain-full-tab-item name="BathRoom"
-        ><test-compo name="444"></test-compo
-      ></grain-full-tab-item>
+      <grain-full-tab-item name="LivingRoom">
+        <living-room />
+      </grain-full-tab-item>
+      <grain-full-tab-item name="BedRoom">
+        <bed-room />
+      </grain-full-tab-item>
+      <grain-full-tab-item name="BathRoom">
+        <bath-room />
+      </grain-full-tab-item>
     </grain-full-tab>
   </div>
 </template>
@@ -52,15 +52,19 @@ import GrainFullButton from "../../../../components/GrainFull/Neumorphism/GrainF
 import GrainFullPanel from "../../../../components/GrainFull/Neumorphism/GrainFullPanel";
 import GrainFullTab from "../../../../components/GrainFull/Neumorphism/GrainFullTab";
 import GrainFullTabItem from "../../../../components/GrainFull/Neumorphism/GrainFullTabItem";
-import TestCompo from "../../../../components/GrainFull/Neumorphism/TestCompo";
 import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFullIcon";
 import Usual from "../components/Usual";
+import LivingRoom from "../components/LivingRoom";
+import BedRoom from "../components/BedRoom";
+import BathRoom from "../components/BathRoom";
 export default {
   name: "HomePage",
   components: {
+    BathRoom,
+    BedRoom,
+    LivingRoom,
     Usual,
     GrainFullIcon,
-    TestCompo,
     GrainFullTabItem,
     GrainFullTab,
     GrainFullButton,
@@ -81,7 +85,9 @@ export default {
   },
   mounted() {},
   methods: {
-    test() {}
+    clickPanel(index) {
+      this.statusActiveIndex = index;
+    }
   }
 };
 </script>

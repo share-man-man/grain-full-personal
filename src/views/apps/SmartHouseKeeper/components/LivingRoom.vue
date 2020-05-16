@@ -16,11 +16,23 @@
 import SwitchConsole from "./SwitchConsole";
 
 export default {
-  name: "Usual",
+  name: "LivingRoom",
   components: { SwitchConsole },
   data() {
     return {
       switchList: [
+        {
+          active: true,
+          iconName: "#icon-jiajudeng-",
+          name: "PorchLight",
+          path: "lighting-control"
+        },
+        {
+          active: true,
+          iconName: "#icon-jiajukongtiao-",
+          name: "A/C",
+          path: "air-condition"
+        },
         {
           active: false,
           iconName: "#icon-sound",
@@ -31,18 +43,6 @@ export default {
           active: true,
           iconName: "#icon-fridge",
           name: "Fridge"
-        },
-        {
-          active: false,
-          iconName: "#icon-jiajudeng-",
-          name: "PorchLight",
-          path: "lighting-control"
-        },
-        {
-          active: false,
-          iconName: "#icon-jiajukongtiao-",
-          name: "A/C",
-          path: "air-condition"
         }
       ]
     };

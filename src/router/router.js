@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Layout from "../views/Layout/Layout";
+import Layout from "../views/Layout/Layout";
+
+// 导入智能家具路由
+import { list as SmartHomeList } from "./smart-home";
 
 Vue.use(VueRouter);
 
@@ -8,7 +11,7 @@ const routes = [
   /*自动进入某页*/
   {
     path: "*",
-    redirect: "/smart-house-keeper/home-page"
+    redirect: "/"
   },
   {
     path: "/test",
@@ -17,74 +20,6 @@ const routes = [
       title: "测试"
     }
   },
-  {
-    path: "/smart-house-keeper",
-    component: () => import("../views/apps/SmartHouseKeeper/App"),
-    meta: {
-      title: "智能家居"
-    },
-    children: [
-      {
-        path: "",
-        component: () =>
-          import("../views/apps/SmartHouseKeeper/Layout/Layout.vue"),
-        children: [
-          {
-            path: "home-page",
-            component: () =>
-              import("../views/apps/SmartHouseKeeper/HomePage/HomePage.vue"),
-            meta: {
-              title: "首页"
-            }
-          },
-          {
-            path: "statistic",
-            component: () =>
-              import("../views/apps/SmartHouseKeeper/Data/Data.vue"),
-            meta: {
-              title: "统计"
-            }
-          },
-          {
-            path: "mine",
-            component: () =>
-              import("../views/apps/SmartHouseKeeper/Mine/Mine.vue"),
-            meta: {
-              title: "个人中心"
-            }
-          }
-        ]
-      },
-      {
-        path: "air-condition",
-        component: () =>
-          import(
-            "../views/apps/SmartHouseKeeper/Manipulation/AirCondition.vue"
-          ),
-        meta: {
-          title: "空调操控"
-        }
-      },
-      {
-        path: "lighting-control",
-        component: () =>
-          import(
-            "../views/apps/SmartHouseKeeper/LightingControl/LightingControl.vue"
-          ),
-        meta: {
-          title: "灯光控制"
-        }
-      },
-      {
-        path: "sound-box",
-        component: () =>
-          import("../views/apps/SmartHouseKeeper/SoundBox/SoundBox.vue"),
-        meta: {
-          title: "音响"
-        }
-      }
-    ]
-  }
   // {
   //   path: "/login",
   //   component: () => import("../views/login/login"),
@@ -92,27 +27,29 @@ const routes = [
   //     title: "登陆"
   //   }
   // },
-  // {
-  //   path: "/",
-  //   component: Layout,
-  //   redirect: "/accent",
-  //   children: [
-  //     {
-  //       path: "nasa",
-  //       component: () => import("../views/nasa/Nasa"),
-  //       meta: {
-  //         title: "nasa每日一图"
-  //       }
-  //     },
-  //     {
-  //       path: "accent",
-  //       component: () => import("../views/accent/Accent"),
-  //       meta: {
-  //         title: "四川口音"
-  //       }
-  //     }
-  //   ]
-  // }
+  {
+    path: "/",
+    component: Layout,
+    // redirect: "/smart-house-keeper/home-page",
+    children: [
+      // 智能家居
+      SmartHomeList
+      // {
+      //   path: "nasa",
+      //   component: () => import("../views/nasa/Nasa"),
+      //   meta: {
+      //     title: "nasa每日一图"
+      //   }
+      // },
+      // {
+      //   path: "accent",
+      //   component: () => import("../views/accent/Accent"),
+      //   meta: {
+      //     title: "四川口音"
+      //   }
+      // }
+    ]
+  }
 ];
 
 const router = new VueRouter({

@@ -7,8 +7,7 @@ const state = {
 };
 
 // 获取计算属性
-const getters = {
-};
+const getters = {};
 
 // 异步提交数据
 const actions = {};
@@ -23,7 +22,7 @@ const mutations = {
       state.showing = true;
     }
   },
-  setSpreading(state, {isMobile}) {
+  setSpreading(state, { isMobile }) {
     if (isMobile) {
       state.showing = !state.showing;
     } else {

@@ -21,13 +21,10 @@ const getters = {
 };
 
 // 异步提交数据
-const actions = {
-};
+const actions = {};
 
 // 同步提交数据
-const mutations = {
-
-};
+const mutations = {};
 
 export default {
   namespaced: true,

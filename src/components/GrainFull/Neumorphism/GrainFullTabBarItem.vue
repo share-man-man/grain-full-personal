@@ -1,10 +1,6 @@
 <template>
   <div :class="objClass" @click="clickTabBarItem">
-    <grain-full-button
-            :click="active"
-            type="unit"
-            width="40px"
-            height="40px">
+    <grain-full-button :click="active" type="unit" width="40px" height="40px">
       <grain-full-icon :name="iconName" />
     </grain-full-button>
     <p class="p">{{ name }}</p>
