@@ -92,6 +92,7 @@ export default {
   font-weight: 600;
   margin: 10px auto;
   white-space: pre;
+  background-color: transparent;
 }
 
 .body {
