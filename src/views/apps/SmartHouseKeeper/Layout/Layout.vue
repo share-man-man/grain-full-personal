@@ -111,7 +111,7 @@ export default {
 }
 .header {
   /*不能放在body里，否则两个函数都不能渲染*/
-  padding-top: constant(safe-area-inset-top); /* 兼容 iOS < 11.2 */
-  padding-top: env(safe-area-inset-top); /* 兼容 iOS >= 11.2 */
+  /*padding-top: constant(safe-area-inset-top); !* 兼容 iOS < 11.2 *!*/
+  /*padding-top: env(safe-area-inset-top); !* 兼容 iOS >= 11.2 *!*/
 }
 </style>

@@ -35,6 +35,7 @@ export default {
     overflow-x: hidden;
     // 虚拟移动端界面
     &.vm-mobile {
+      box-sizing: border-box;
       padding: 40px 0 40px 0;
       @include neumorphism("flat", 350px, 42px, 6px, 0.08, 7px);
       width: 440px;
