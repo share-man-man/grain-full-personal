@@ -30,10 +30,15 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    // redirect: "/smart-house-keeper/home-page",
+    redirect: "/smart-house-keeper/home-page",
     children: [
       // 智能家居
-      SmartHomeList
+      SmartHomeList,
+      // 运维管理系统
+      {
+        path: "/manage-system",
+        component: () => import("../views/apps/ManageSystem/App.vue")
+      }
       // {
       //   path: "nasa",
       //   component: () => import("../views/nasa/Nasa"),

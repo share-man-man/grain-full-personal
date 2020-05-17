@@ -141,8 +141,8 @@ export default {
   },
   data() {
     return {
-      subWoofer: 32,
-      volume: 78,
+      subWoofer: 0,
+      volume: 0,
       panelItems: [
         { name: "Classics", data: [32, 11] },
         { name: "Pop", data: [87, 1] },
@@ -163,6 +163,11 @@ export default {
       this.subWoofer = data[0];
       this.volume = data[1];
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.click([66, 89]);
+    });
   }
 };
 </script>

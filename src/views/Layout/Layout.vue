@@ -57,19 +57,6 @@ export default {
       // vmMobile: true
     };
   },
-  watch: {
-    // $route: {
-    //   handler(to) {
-    //     setTimeout(() => {
-    //       const path = ["smart-house-keeper"];
-    //       const inPath = to.path && path.includes(to.path.split("/")[1]);
-    //       // 非移动端用户，进入移动端路径
-    //       this.vmMobile = !this.isMobile && inPath;
-    //     });
-    //   },
-    //   immediate: true
-    // }
-  },
   computed: {
     ...mapState({
       //是否为移动端
@@ -82,10 +69,10 @@ export default {
       return !this.isMobile ? "" : "app-sidebar";
     },
     vmMobile() {
-      const path = ["smart-house-keeper"];
+      const path = ["smart-house-keeper", "manage-system"];
       const inPath =
         this.$route.path && path.includes(this.$route.path.split("/")[1]);
-      // 非移动端用户，进入移动端路径
+      // 非移动端界面，进入移动端路径
       return !this.isMobile && inPath;
     }
   },
@@ -95,11 +82,11 @@ export default {
     },
     toRoute(path) {
       if (this.$route.path !== path) {
-        this.closeOverlay();
         this.$router.push({
           path: path
         });
       }
+      this.closeOverlay();
     }
   }
 };

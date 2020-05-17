@@ -145,8 +145,8 @@ export default {
     return {
       patternFlag: true,
       star: false,
-      brightLess: 30,
-      colorTemperature: 12,
+      brightLess: 0,
+      colorTemperature: 0,
       statusActiveIndex: -1,
       statusList: [
         {
@@ -188,6 +188,11 @@ export default {
       this.brightLess = this.statusList[index].data[0];
       this.colorTemperature = this.statusList[index].data[1];
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.clickTab(1);
+    });
   }
 };
 </script>

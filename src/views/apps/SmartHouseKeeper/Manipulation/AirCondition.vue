@@ -108,7 +108,6 @@ import GrainFullIcon from "../../../../components/GrainFull/Neumorphism/GrainFul
 import GrainFullSwitch from "../../../../components/GrainFull/Neumorphism/GrainFullSwitch";
 import GrainFullCircle from "../../../../components/GrainFull/Neumorphism/GrainFullCircle";
 import GrainFullPanel from "../../../../components/GrainFull/Neumorphism/GrainFullPanel";
-// import GrainFullButton from "../../../../components/GrainFull/Neumorphism/GrainFullButton";
 export default {
   name: "AirCondition",
   components: {
@@ -134,7 +133,7 @@ export default {
           data: [40, 75, 27]
         },
         {
-          name: "Going Out",
+          name: "GoOut",
           active: false,
           icon: "#icon-qiangfeng",
           data: [90, 50, 73]
@@ -167,7 +166,9 @@ export default {
     }
   },
   mounted() {
-    this.clickTab(0);
+    setTimeout(() => {
+      this.clickTab(0);
+    });
   }
 };
 </script>

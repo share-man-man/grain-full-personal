@@ -7,9 +7,13 @@
       @close="handleClose"
       :collapse="!spreading"
     >
-      <el-menu-item index="1" @click="toRoute">
+      <el-menu-item index="1" @click="toRoute('/smart-house-keeper/home-page')">
         <img :src="smartHome" class="icon-style" />
         <span slot="title">智能家居</span>
+      </el-menu-item>
+      <el-menu-item index="2" @click="toRoute('/manage-system')">
+        <img :src="manageSystem" class="icon-style" />
+        <span slot="title">运维管理系统</span>
       </el-menu-item>
       <!--      <el-menu-item index="1">-->
       <!--        <img :src="nasaSvg" style="margin-right: 8px;margin-left: 3px" />-->
@@ -59,8 +63,8 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    toRoute() {
-      this.$emit("toRoute", "/smart-house-keeper/home-page");
+    toRoute(path) {
+      this.$emit("toRoute", path);
     }
   }
 };

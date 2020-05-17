@@ -31,8 +31,11 @@ export default {
     width: 100%;
     // 配合过渡动画的定位，是fixed以该dom为准
     transform: translate3d(0, 0, 0);
+    // 防止左右滑动时，出现x轴滚动条
+    overflow-x: hidden;
     // 虚拟移动端界面
     &.vm-mobile {
+      padding: 40px 0 40px 0;
       @include neumorphism("flat", 350px, 42px, 6px, 0.08, 7px);
       width: 440px;
       max-height: 805px;
