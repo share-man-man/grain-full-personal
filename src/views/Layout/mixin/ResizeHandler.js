@@ -8,10 +8,11 @@ export default {
   watch: {
     $route() {
       //app点击菜单栏时需要关闭侧边栏
-      if (store.state.app.isMobile && store.state.sidebar.opened) {
-        store.commit("sidebar/setSpreading", {
-          isMobile: store.state.app.isMobile
-        });
+      if (store.state.app.isMobile) {
+        store.commit("sidebar/hideSidebar");
+        // store.commit("sidebar/appCloseSidebar", {
+        //   isMobile: store.state.app.isMobile
+        // });
       }
     }
   },

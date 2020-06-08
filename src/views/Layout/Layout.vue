@@ -62,14 +62,16 @@ export default {
       //是否为移动端
       isMobile: state => state.app.isMobile,
       //是否展示侧边栏
-      sidebarShowing: state => state.sidebar.showing
+      sidebarShowing: state => state.sidebar.showing,
+      //是否展开侧边栏
+      sidebarSpreading: state => state.sidebar.spreading
     }),
     //侧边栏响应式样式
     appSidebarClass() {
       return !this.isMobile ? "" : "app-sidebar";
     },
     vmMobile() {
-      const path = ["smart-house-keeper", "manage-system"];
+      const path = ["smart-home", "manage-system"];
       const inPath =
         this.$route.path && path.includes(this.$route.path.split("/")[1]);
       // 非移动端界面，进入移动端路径
@@ -78,15 +80,20 @@ export default {
   },
   methods: {
     closeOverlay() {
-      this.$store.commit("sidebar/setSpreading", { isMobile: this.isMobile });
+      this.$store.commit("sidebar/setSpreading", {
+        isMobile: this.isMobile
+      });
     },
     toRoute(path) {
+      if (!this.isMobile && !this.sidebarSpreading) {
+        this.$store.commit("sidebar/spreadSidebar");
+      }
       if (this.$route.path !== path) {
         this.$router.push({
           path: path
         });
       }
-      this.closeOverlay();
+      // this.closeOverlay();
     }
   }
 };

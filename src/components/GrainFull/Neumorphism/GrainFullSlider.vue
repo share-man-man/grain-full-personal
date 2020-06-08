@@ -74,7 +74,7 @@ export default {
       this.clickWidth = this.$refs.progress.clientWidth;
       // document.addEventListener("mousemove", this.fnMove);
       // document.addEventListener("mouseup", this.fnUp);
-      document.addEventListener("touchmove", this.fnMove);
+      document.addEventListener("touchmove", this.fnMove, { passive: true });
       document.addEventListener("touchend", this.fnUp);
     },
     // 鼠标点击事件
@@ -83,7 +83,7 @@ export default {
       //记录鼠标按下的位置
       this.clickX = e.clientX;
       this.clickWidth = this.$refs.progress.clientWidth;
-      document.addEventListener("mousemove", this.fnMove);
+      document.addEventListener("mousemove", this.fnMove, { passive: true });
       document.addEventListener("mouseup", this.fnUp);
       // document.addEventListener("touchmove", this.fnMove);
       // document.addEventListener("touchend", this.fnUp);
@@ -124,6 +124,7 @@ export default {
   margin: 10px auto;
   white-space: pre;
 }
+
 .slider {
   position: relative;
   width: 100%;
@@ -140,12 +141,14 @@ export default {
     //box-shadow: 0 0 3px 1px $GrainFullMainColor;
     border-radius: inherit;
     transition: width 0.2s;
+
     &-button {
       position: absolute;
       top: 50%;
       right: 0;
       transform: translate3d(50%, -50%, 0);
       cursor: grab;
+
       &-default {
         width: 30px;
         height: 30px;

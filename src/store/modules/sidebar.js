@@ -22,11 +22,19 @@ const mutations = {
       state.showing = true;
     }
   },
+  hideSidebar(state) {
+    state.showing = false;
+  },
+  spreadSidebar(state) {
+    state.spreading = true;
+  },
   setSpreading(state, { isMobile }) {
     if (isMobile) {
       state.showing = !state.showing;
+      // state.showing = open;
     } else {
       state.spreading = !state.spreading;
+      // state.spreading = open;
     }
   }
 };

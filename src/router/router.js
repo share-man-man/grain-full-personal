@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Layout from "../views/Layout/Layout";
 
 // 导入智能家具路由
-import { list as SmartHomeList } from "./smart-home";
+// import { list as SmartHomeList } from "./smart-home";
 
 Vue.use(VueRouter);
 
@@ -30,10 +30,14 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/smart-house-keeper/home-page",
+    redirect: "/smart-home",
     children: [
       // 智能家居
-      SmartHomeList,
+      // SmartHomeList,
+      {
+        path: "/smart-home",
+        component: () => import("../views/apps/SmartHouseKeeper/App.vue")
+      },
       // 运维管理系统
       {
         path: "/manage-system",

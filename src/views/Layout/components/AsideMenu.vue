@@ -7,7 +7,7 @@
       @close="handleClose"
       :collapse="!spreading"
     >
-      <el-menu-item index="1" @click="toRoute('/smart-house-keeper/home-page')">
+      <el-menu-item index="1" @click="toRoute('/smart-home')">
         <img :src="smartHome" class="icon-style" />
         <span slot="title">智能家居</span>
       </el-menu-item>
