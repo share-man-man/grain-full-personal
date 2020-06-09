@@ -2,9 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../views/Layout/Layout";
 
-// 导入智能家具路由
-// import { list as SmartHomeList } from "./smart-home";
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,7 +30,6 @@ const routes = [
     redirect: "/smart-home",
     children: [
       // 智能家居
-      // SmartHomeList,
       {
         path: "/smart-home",
         component: () => import("../views/apps/SmartHouseKeeper/App.vue")
