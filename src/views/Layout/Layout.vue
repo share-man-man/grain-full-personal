@@ -85,13 +85,20 @@ export default {
       });
     },
     toRoute(path) {
+      // 非移动端点击菜单需要展开菜单栏
       if (!this.isMobile && !this.sidebarSpreading) {
         this.$store.commit("sidebar/spreadSidebar");
       }
+
+      // 只有路由改变才跳转
       if (this.$route.path !== path) {
         this.$router.push({
           path: path
         });
+        // 移动端在跳转路由的时候需要隐藏菜单栏
+        if (this.isMobile) {
+          this.$store.commit("sidebar/hideSidebar");
+        }
       }
       // this.closeOverlay();
     }
