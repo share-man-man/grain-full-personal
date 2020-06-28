@@ -1,6 +1,8 @@
 <template>
   <div style="overflow-x: scroll">
-    <div style="width: 10000px;height: 300px;background-color: #42b983"></div>
+    <div>
+      {{ obj }}
+    </div>
   </div>
 </template>
 <script>
@@ -24,7 +26,11 @@ export default {
       percent2: 12,
       x: 0,
       y: 0,
-      click: false
+      click: false,
+      obj: {
+        name: "aaa",
+        age: 123
+      }
     };
   },
   // beforeCreate() {
@@ -60,7 +66,14 @@ export default {
       document.removeEventListener("touchend", this.fnUp);
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.obj);
+    let copyObj = { ...this.obj };
+    console.log(copyObj);
+    setTimeout(() => {
+      copyObj.age = 333;
+    }, 3000);
+  }
 };
 </script>
 

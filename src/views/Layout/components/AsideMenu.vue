@@ -13,7 +13,7 @@
       </el-menu-item>
       <el-menu-item index="2" @click="toRoute('/manage-system')">
         <img :src="manageSystem" class="icon-style" />
-        <span slot="title">运维管理系统</span>
+        <span slot="title">事件流程系统</span>
       </el-menu-item>
       <!--      <el-menu-item index="1">-->
       <!--        <img :src="nasaSvg" style="margin-right: 8px;margin-left: 3px" />-->

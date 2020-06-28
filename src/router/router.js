@@ -34,7 +34,7 @@ const routes = [
         path: "/smart-home",
         component: () => import("../views/apps/SmartHouseKeeper/App.vue")
       },
-      // 运维管理系统
+      // 事件流程系统
       {
         path: "/manage-system",
         component: () => import("../views/apps/ManageSystem/App.vue")
