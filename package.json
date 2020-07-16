@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "yarn serve --mode developer",
-    "build-gitee": "yarn build --mode gitee"
+    "gitee": "yarn build --mode gitee"
   },
   "dependencies": {
     "@vant/touch-emulator": "^1.2.0",

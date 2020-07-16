@@ -11,9 +11,9 @@
         <img :src="smartHome" class="icon-style" />
         <span slot="title">智能家居</span>
       </el-menu-item>
-      <el-menu-item index="2" @click="toRoute('/manage-system')">
+      <el-menu-item index="2" @click="toRoute('/service-platform')">
         <img :src="manageSystem" class="icon-style" />
-        <span slot="title">事件流程系统</span>
+        <span slot="title">服务平台</span>
       </el-menu-item>
       <!--      <el-menu-item index="1">-->
       <!--        <img :src="nasaSvg" style="margin-right: 8px;margin-left: 3px" />-->
@@ -33,7 +33,7 @@ import { Menu, MenuItem } from "element-ui";
 import { mapState } from "vuex";
 import nasa from "../../../assets/nasa.svg";
 import hotPot from "../../../assets/hot-pot.svg";
-import manageSystem from "../../../assets/img/menu/manage-system.png";
+import manageSystem from "../../../assets/img/menu/service-platform.png";
 import smartHome from "../../../assets/img/menu/smart-home.png";
 
 export default {

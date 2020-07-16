@@ -36,8 +36,8 @@ const routes = [
       },
       // 事件流程系统
       {
-        path: "/manage-system",
-        component: () => import("../views/apps/ManageSystem/App.vue")
+        path: "/service-platform",
+        component: () => import("../views/apps/ServicePlatform/App.vue")
       }
       // {
       //   path: "nasa",

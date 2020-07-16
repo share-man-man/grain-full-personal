@@ -71,7 +71,7 @@ export default {
       return !this.isMobile ? "" : "app-sidebar";
     },
     vmMobile() {
-      const path = ["smart-home", "manage-system"];
+      const path = ["smart-home", "service-platform"];
       const inPath =
         this.$route.path && path.includes(this.$route.path.split("/")[1]);
       // 非移动端界面，进入移动端路径
@@ -107,20 +107,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: right;
-  mine-height: 60px;
-}
+/*.el-header,*/
+/*.el-footer {*/
+/*  background-color: #b3c0d1;*/
+/*  color: #333;*/
+/*  text-align: right;*/
+/*  mine-height: 60px;*/
+/*}*/
 
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  /*line-height: 200px;*/
-}
+/*.el-aside {*/
+/*  background-color: #d3dce6;*/
+/*  color: #333;*/
+/*  text-align: center;*/
+/*  !*line-height: 200px;*!*/
+/*}*/
 
 .el-main {
   background-color: white;
